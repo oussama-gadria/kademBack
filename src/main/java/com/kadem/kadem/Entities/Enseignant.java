@@ -12,11 +12,13 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Builder
-public class Universite {
+public class Enseignant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id_universite;
-    public String nom_universite;
-    @OneToMany
-    private List<Enseignant> enseignant;
+    public Long id_Enseignant;
+    public String nom_Enseignant;
+    public String prenom_Enseignant;
+    public String domaine;
+    @OneToMany(mappedBy = "enseignant")
+    public Universite universite;
 }
