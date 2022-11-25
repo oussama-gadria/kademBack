@@ -29,12 +29,18 @@ public class EtudiantService  implements EtudiantServiceInterface{
 
     @Override
     public Etudiant updateEtudiant(Long Id, Etudiant E) {
-        Etudiant etudiant=EtudiantRepo.findById(Id).get();
-        etudiant.setNomE(E.getNomE());
-        etudiant.setPrenomE(E.getPrenomE());
-        etudiant.setOption(E.getOption());
-        EtudiantRepo.save(etudiant);
-        return etudiant;
+        if (EtudiantRepo.existsById(Id)) {
+            Etudiant etudiant = EtudiantRepo.findById(Id).get();
+            etudiant.setNomE(E.getNomE());
+            etudiant.setPrenomE(E.getPrenomE());
+            etudiant.setOption(E.getOption());
+            EtudiantRepo.save(etudiant);
+            return etudiant;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     @Override

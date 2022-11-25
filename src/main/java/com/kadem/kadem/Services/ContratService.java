@@ -31,15 +31,18 @@ public String addContrat (Contrat C)
 
     @Override
     public Contrat updateContrat(Long Id, Contrat C) {
-    Contrat contrat=ContratRepo.findById(Id).get();
-    contrat.setDateDebutContrat(C.getDateDebutContrat());
-    contrat.setDateFinContrat(C.getDateFinContrat());
-    contrat.setArchive(C.getArchive());
-    contrat.setSpecialite(C.getSpecialite());
-    ContratRepo.save(contrat);
-    return contrat;
+        if (ContratRepo.existsById(Id)) {
+            Contrat contrat = ContratRepo.findById(Id).get();
+            contrat.setDateDebutContrat(C.getDateDebutContrat());
+            contrat.setDateFinContrat(C.getDateFinContrat());
+            contrat.setArchive(C.getArchive());
+            contrat.setSpecialite(C.getSpecialite());
+            ContratRepo.save(contrat);
+            return contrat;
+        } else {
+            return null;
+        }
     }
-
     @Override
     public Contrat GetContratById(Long Id) {
         return ContratRepo.findById(Id).get();
