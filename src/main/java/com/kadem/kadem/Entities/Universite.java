@@ -3,6 +3,7 @@ package com.kadem.kadem.Entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -12,11 +13,11 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Builder
-public class Universite {
+public class Universite implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id_universite;
     public String nom_universite;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "universite")
     private List<Enseignant> enseignant;
 }

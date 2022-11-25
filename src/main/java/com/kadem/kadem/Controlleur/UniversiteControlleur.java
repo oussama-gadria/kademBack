@@ -20,7 +20,7 @@ public class UniversiteControlleur {
         return universiteService.addUnversite(u);
     }
 
-    @GetMapping("/getAllUniersite")
+    @GetMapping("/getAllUniversite")
     public List<Universite> getListeUniversite()
     {
         return universiteService.retrieveAllUniversite();
@@ -34,7 +34,7 @@ public class UniversiteControlleur {
     }
 
     @PutMapping("/updateUniversite/{id}")
-    public Universite updateContrat(@PathVariable("id")Long id,  @RequestBody() Universite u )
+    public Universite updateContrat(@PathVariable("id")Long id,@RequestBody() Universite u )
     {
         return universiteService.updateUniversite(u,id);
     }

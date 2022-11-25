@@ -11,4 +11,6 @@ public interface EnseignantSerivceInterface {
     Enseignant updateEnseignant(Enseignant enseignant,Long idE);
     Enseignant retrieveEnseignant(Long idEnseignant);
     Long deleteEnseignant(Long idEnseignant);
+   /* void addEnseignantWithUniversite(Long idUniversite,Enseignant enseignant);*/
+
 }

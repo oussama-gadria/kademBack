@@ -24,7 +24,6 @@ public class UniversiteService implements UniversiteServiceInterface{
     @Override
     public Universite updateUniversite(Universite u,Long idUniversite) {
         Universite upUniversite=universiteRepository.findById(idUniversite).get();
-        upUniversite.setId_universite(u.getId_universite());
         upUniversite.setNom_universite(u.getNom_universite());
         universiteRepository.save(upUniversite);
         return upUniversite;
