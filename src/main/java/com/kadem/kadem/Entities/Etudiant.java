@@ -1,8 +1,6 @@
 package com.kadem.kadem.Entities;
 
-<<<<<<< Updated upstream
-public class Etudiant {
-=======
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,9 +26,7 @@ public class Etudiant implements Serializable {
     private Option option;
 
 
-
-
-
-
->>>>>>> Stashed changes
 }
+
+
+
