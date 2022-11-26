@@ -25,6 +25,12 @@ public class Etudiant implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private Option option;
+    @ManyToMany(mappedBy="etudiants",cascade=CascadeType.ALL)
+    private List<Equipe> equipes;
+
+
+    @ManyToOne
+    private Departement departement;
 
 
 

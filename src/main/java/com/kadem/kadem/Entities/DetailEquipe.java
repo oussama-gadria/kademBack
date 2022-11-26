@@ -18,19 +18,16 @@ import java.io.Serializable;
 @Table( name = "DetailEquipe")
 
 public class DetailEquipe implements Serializable {
-
     @Id
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name="salle")
-
     private Integer salle;
 
     private String thematique;
-    @JsonIgnore
-    @OneToOne
-    private Equipe equipe;
 
+    @JsonIgnore
+    @OneToOne(mappedBy = "detailEquipe")
+    private Equipe equipe;
 }
 
