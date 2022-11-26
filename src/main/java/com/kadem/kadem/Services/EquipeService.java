@@ -1,6 +1,8 @@
 package com.kadem.kadem.Services;
 
+import com.kadem.kadem.Entities.DetailEquipe;
 import com.kadem.kadem.Entities.Equipe;
+import com.kadem.kadem.Repository.DetailEquipeRepository;
 import com.kadem.kadem.Repository.EquipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ import java.util.List;
 public class EquipeService implements IEquipeService {
     @Autowired
     private EquipeRepository equipeRepository;
+    @Autowired
+    private DetailEquipeRepository detailEquipeRepository;
     @Override
     public List<Equipe> getListeEquipes(){
         return (List<Equipe>) equipeRepository.findAll();
@@ -48,6 +52,14 @@ public class EquipeService implements IEquipeService {
         else {
             return "false";
         }
+    }
+
+    @Override
+    public Equipe addEquipeWithDetailEquipe(int IdDE, Equipe E){
+        DetailEquipe detailEquipe=detailEquipeRepository.findById(IdDE).get();
+        E.setDetailEquipe(detailEquipe);
+        equipeRepository.save(E);
+        return E;
     }
 
 
