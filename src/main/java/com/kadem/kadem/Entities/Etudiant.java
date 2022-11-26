@@ -25,6 +25,9 @@ public class Etudiant implements Serializable {
     @Enumerated(EnumType.STRING)
     private Option option;
 
+    @ManyToOne
+    private Departement departement;
+
 
 }
 
