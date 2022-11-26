@@ -46,17 +46,14 @@ public class EnseignantService implements EnseignantSerivceInterface{
         return idEnseignant;
     }
 
-    /*
+
     @Override
-    public void addEnseignantWithUniversite(Long idUniversite, Enseignant enseignant) {
+    public Enseignant addEnseignantWithUniversite(Long idUniversite, Enseignant enseignant) {
         Universite univ=universiteRepository.findById(idUniversite).get();
         enseignant.setUniversite(univ);
-        Enseignant s=enseignantRepository.save(enseignant);
-        List<Enseignant> enseignants_univ=univ.getEnseignant();
-        enseignants_univ.add(s);
-        univ.setEnseignant(enseignants_univ);
-        universiteRepository.save(univ);
+        enseignantRepository.save(enseignant);
+        return  enseignant;
     }
-    */
+
 
 }

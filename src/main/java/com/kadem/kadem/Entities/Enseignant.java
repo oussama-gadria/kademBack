@@ -1,5 +1,6 @@
 package com.kadem.kadem.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class Enseignant implements Serializable {
     public String nom_Enseignant;
     public String prenom_Enseignant;
     public String domaine;
+    @JsonIgnore
     @ManyToOne
     public Universite universite;
 }
