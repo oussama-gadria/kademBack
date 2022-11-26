@@ -1,5 +1,6 @@
 package com.kadem.kadem.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,7 +32,6 @@ public class Equipe implements Serializable {
     @Enumerated(EnumType.STRING)
 
     private Niveau niveau;
-
     @OneToOne(cascade = CascadeType.ALL, mappedBy="equipe")
     private DetailEquipe detailEquipe;
 
