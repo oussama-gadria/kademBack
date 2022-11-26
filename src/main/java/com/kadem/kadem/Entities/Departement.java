@@ -1,42 +1,32 @@
 package com.kadem.kadem.Entities;
 
-
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @ToString
 @Builder
-@Entity
 
-@Table( name = "Equipe")
-
-public class Equipe implements Serializable {
+public class Departement implements Serializable{
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long idEquipe;
-
-    private String nomEquipe;
+    private Long idDepart;
+    private String nomDepart;
 
     @Enumerated(EnumType.STRING)
-
-    private Niveau niveau;
-
+    private BLOC bloc;
     @OneToOne
-    private DetailEquipe detailEquipe;
+    private RespDepart RD;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="departement")
     private List<Etudiant> etudiants;
 
 }

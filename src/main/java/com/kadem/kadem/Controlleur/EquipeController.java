@@ -43,4 +43,9 @@ public class EquipeController {
         Equipe result= equipeService.updateEquipe(id,equipe);
         return result;
     }
+
+    @PostMapping("/addEquipeWithDetailEquipe/{id}")
+    public Equipe addEquipeWithDetailEquipe(@PathVariable("id") int id, @RequestBody Equipe e){
+        return equipeService.addEquipeWithDetailEquipe(id,e);
+    }
 }

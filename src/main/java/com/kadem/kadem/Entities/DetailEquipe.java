@@ -1,5 +1,6 @@
 package com.kadem.kadem.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,19 +18,16 @@ import java.io.Serializable;
 @Table( name = "DetailEquipe")
 
 public class DetailEquipe implements Serializable {
-
     @Id
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column(name="salle")
 
     private Integer salle;
 
     private String thematique;
 
-    @OneToOne
+    @JsonIgnore
+    @OneToOne(mappedBy = "detailEquipe")
     private Equipe equipe;
-
 }
 

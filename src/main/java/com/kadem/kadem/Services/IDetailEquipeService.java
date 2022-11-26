@@ -12,7 +12,7 @@ public interface IDetailEquipeService {
     public DetailEquipe addDetailEquipe(DetailEquipe DE);
     public DetailEquipe updateDetailEquipe(int id , DetailEquipe DE);
     public String deleteDetailEquipe(int id);
-    public String DetailEquipeWithEquipe(Long IdEquipe, DetailEquipe DE);
+
 
 
 }
