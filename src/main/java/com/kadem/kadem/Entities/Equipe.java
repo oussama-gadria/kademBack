@@ -1,10 +1,12 @@
 package com.kadem.kadem.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 
 @Getter
@@ -23,8 +25,6 @@ public class Equipe implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name="idEquipe")
-
     private Long idEquipe;
 
     private String nomEquipe;
@@ -32,7 +32,11 @@ public class Equipe implements Serializable {
     @Enumerated(EnumType.STRING)
 
     private Niveau niveau;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy="equipe")
+
+    @OneToOne
     private DetailEquipe detailEquipe;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Etudiant> etudiants;
 
 }
