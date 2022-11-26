@@ -45,7 +45,7 @@ public class DetailEquipeController {
     }
 
     @PostMapping("/addDetailEquipeWithEquipe/{id}")
-    public  String addDetailEquipeWithEquipe(@PathVariable("id") Long id,  @RequestBody DetailEquipe de){
+    public  DetailEquipe addDetailEquipeWithEquipe(@PathVariable("id") Long id,  @RequestBody DetailEquipe de){
         return detailEquipeService.DetailEquipeWithEquipe(id,de);
 
     }

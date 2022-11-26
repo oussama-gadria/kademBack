@@ -55,10 +55,10 @@ public class DetailEquipeService implements IDetailEquipeService {
     }
 
     @Override
-    public String DetailEquipeWithEquipe(Long IdEquipe, DetailEquipe DE) {
+    public DetailEquipe DetailEquipeWithEquipe(Long IdEquipe, DetailEquipe DE) {
         Equipe equipe=equipeRepository.findById(IdEquipe).get();
         DE.setEquipe(equipe);
         detailEquipeRepository.save(DE);
-        return "validée";
+        return DE;
     }
 }
