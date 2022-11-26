@@ -12,6 +12,7 @@ public interface IEquipeService {
     public Equipe addEquipe(Equipe E);
     public Equipe updateEquipe(Long id , Equipe E);
     public String deleteEquipe(Long id);
+    public Equipe addEquipeWithDetailEquipe(int IdDE, Equipe E);
 
 
 }
