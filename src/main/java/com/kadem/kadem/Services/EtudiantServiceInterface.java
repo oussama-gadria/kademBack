@@ -8,10 +8,17 @@ import java.util.List;
 public interface EtudiantServiceInterface {
 
 
+    ////CRUD ETUDIANT
     String addEtudiant (Etudiant E);
     List<Etudiant> GetAllEtudiants();
     Etudiant updateEtudiant (Long Id,Etudiant E );
     Etudiant GetEtudiantById (Long Id);
     void DeleteEtudiant(Long Id);
+
+
+
+
+
+
 
 }

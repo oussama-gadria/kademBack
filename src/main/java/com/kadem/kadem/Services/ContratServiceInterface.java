@@ -11,6 +11,6 @@ public interface ContratServiceInterface {
     Contrat GetContratById (Long Id);
     void DeleteContrat(Long Id);
 
-
-
+    /////Affecter un contrat à un étudiant en vérifiant que l’étudiant n’a pas dépassé la limite autorisée de 5 contrats actifs.
+    Contrat affectContratToEtudiant (Contrat C, String nomE,String prenomE);
 }

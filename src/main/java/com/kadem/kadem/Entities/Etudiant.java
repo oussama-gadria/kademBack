@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,6 +25,13 @@ public class Etudiant implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private Option option;
+
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="etudiant")
+    private List<Contrat> contrats;
+
+
 
 
 }

@@ -1,7 +1,9 @@
 package com.kadem.kadem.Services;
 
 import com.kadem.kadem.Entities.Contrat;
+import com.kadem.kadem.Entities.Etudiant;
 import com.kadem.kadem.Repository.ContratRepository;
+import com.kadem.kadem.Repository.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,9 @@ import java.util.List;
 public class ContratService implements ContratServiceInterface{
     @Autowired
     private ContratRepository ContratRepo;
+
+    @Autowired
+    private EtudiantRepository EtudiantRepo;
 
 public String addContrat (Contrat C)
 {
@@ -56,7 +61,23 @@ public String addContrat (Contrat C)
 
 
 
+    /////Affecter un contrat à un étudiant en vérifiant que l’étudiant n’a pas dépassé la limite autorisée de 5 contrats actifs.
+    @Override
+    public Contrat affectContratToEtudiant(Contrat C, String nomE, String prenomE) {
+        int nb=0;
+        Etudiant E=EtudiantRepo.findByNomEAndPrenomE(nomE,prenomE);
+        List<Contrat> contrats =E.getContrats();
+        for(Contrat Ce:contrats)
+        {
+            if (Ce.getArchive()==false)
+            {
+                nb=nb+1;
+            }
 
+        }
+
+        return null;
+    }
 
 
 
