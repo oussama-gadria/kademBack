@@ -44,12 +44,12 @@ public class EnseignantControlleur {
     {
         return enseignantService.deleteEnseignant(id);
     }
-    /*
+
    @PostMapping("/addEnseignantWithUniversite/{id}")
-    public String addEnseignantWithUniversite(@RequestBody() Enseignant e,@PathVariable("id")Long id)
+    public Enseignant addEnseignantWithUniversite(@RequestBody() Enseignant e,@PathVariable("id")Long id)
     {
-        enseignantService.addEnseignantWithUniversite(id,e);
-        return "valide";
+        return enseignantService.addEnseignantWithUniversite(id,e);
+
     }
-    */
+
 }
