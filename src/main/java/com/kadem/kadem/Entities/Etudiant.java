@@ -29,6 +29,9 @@ public class Etudiant implements Serializable {
     private List<Equipe> equipes;
 
 
+    @ManyToOne
+    private Departement departement;
+
 
 }
 
