@@ -21,6 +21,6 @@ public class Universite implements Serializable {
     public String nom_universite;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "universite")
     private List<Enseignant> enseignant;
-   /* @OneToMany(cascade = CascadeType.ALL)
-    private List<Departement> departements;*/
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Departement> departements;
 }
