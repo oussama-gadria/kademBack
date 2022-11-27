@@ -25,7 +25,6 @@ public class Departement implements Serializable{
     private BLOC bloc;
     @OneToOne
     private RespDepart RD;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy="departement")
     private List<Etudiant> etudiants;
 

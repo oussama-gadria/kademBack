@@ -17,10 +17,12 @@ import java.util.List;
 public class Enseignant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id_Enseignant;
-    public String nom_Enseignant;
-    public String prenom_Enseignant;
-    public String domaine;
+    public Long idEnseignant;
+    public String nomEnseignant;
+    public String prenomEnseignant;
+    public String nomDepartement;
+    public Float salaire;
+    public Integer experienceParAnnee;
     @JsonIgnore
     @ManyToOne
     public Universite universite;

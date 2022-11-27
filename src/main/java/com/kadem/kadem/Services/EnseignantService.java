@@ -1,6 +1,5 @@
 package com.kadem.kadem.Services;
 
-import com.kadem.kadem.Controlleur.UniversiteControlleur;
 import com.kadem.kadem.Entities.Enseignant;
 import com.kadem.kadem.Entities.Universite;
 import com.kadem.kadem.Repository.EnseignantRepository;
@@ -28,9 +27,11 @@ public class EnseignantService implements EnseignantSerivceInterface{
     @Override
     public Enseignant updateEnseignant(Enseignant enseignant ,Long idE) {
         Enseignant upEnsignant =enseignantRepository.findById(idE).get();
-        upEnsignant.setNom_Enseignant(enseignant.getNom_Enseignant());
-        upEnsignant.setPrenom_Enseignant(enseignant.getPrenom_Enseignant());
-        upEnsignant.setDomaine(enseignant.getDomaine());
+        upEnsignant.setNomEnseignant(enseignant.getNomEnseignant());
+        upEnsignant.setPrenomEnseignant(enseignant.getPrenomEnseignant());
+        upEnsignant.setNomDepartement(enseignant.getNomDepartement());
+        upEnsignant.setSalaire(enseignant.getSalaire());
+        upEnsignant.setExperienceParAnnee(enseignant.getExperienceParAnnee());
         enseignantRepository.save(enseignant);
         return enseignant;
     }
@@ -48,12 +49,25 @@ public class EnseignantService implements EnseignantSerivceInterface{
 
 
     @Override
-    public Enseignant addEnseignantWithUniversite(Long idUniversite, Enseignant enseignant) {
-        Universite univ=universiteRepository.findById(idUniversite).get();
+    public Enseignant addEnseignantWithUniversite(String nomUniversite, Enseignant enseignant) {
+        Universite univ=universiteRepository.findByNomUniversite(nomUniversite);
+        if (univ!=null)
+        {
         enseignant.setUniversite(univ);
         enseignantRepository.save(enseignant);
         return  enseignant;
     }
+        else
+        {
+            return null;
+        }
 
 
+
+   }
+
+    @Override
+    public List<Enseignant> getEnseignantByNomUniversite(String nomUniversite) {
+        return enseignantRepository.getEnseignantByNomUniversite(nomUniversite);
+    }
 }

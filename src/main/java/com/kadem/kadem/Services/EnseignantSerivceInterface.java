@@ -11,6 +11,7 @@ public interface EnseignantSerivceInterface {
     Enseignant updateEnseignant(Enseignant enseignant,Long idE);
     Enseignant retrieveEnseignant(Long idEnseignant);
     Long deleteEnseignant(Long idEnseignant);
-    Enseignant addEnseignantWithUniversite(Long idUniversite,Enseignant enseignant);
+    Enseignant addEnseignantWithUniversite(String nomUniversite,Enseignant enseignant);
+    List<Enseignant> getEnseignantByNomUniversite(String nomUniversite);
 
 }

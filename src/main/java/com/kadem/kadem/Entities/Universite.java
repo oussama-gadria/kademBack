@@ -17,8 +17,8 @@ import java.util.Set;
 public class Universite implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id_universite;
-    public String nom_universite;
+    public Long idUniversite;
+    public String nomUniversite;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "universite")
     private List<Enseignant> enseignant;
     @OneToMany(cascade = CascadeType.ALL)

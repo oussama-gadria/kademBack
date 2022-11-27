@@ -45,11 +45,16 @@ public class EnseignantControlleur {
         return enseignantService.deleteEnseignant(id);
     }
 
-   @PostMapping("/addEnseignantWithUniversite/{id}")
-    public Enseignant addEnseignantWithUniversite(@RequestBody() Enseignant e,@PathVariable("id")Long id)
+   @PostMapping("/addEnseignantWithUniversite/{nom}")
+    public Enseignant addEnseignantWithUniversite(@RequestBody() Enseignant e,@PathVariable("nom")String nom)
     {
-        return enseignantService.addEnseignantWithUniversite(id,e);
+        return enseignantService.addEnseignantWithUniversite(nom,e);
 
+    }
+    @GetMapping("/getEnseignantByNomUniversite/{nomUniversite}")
+    public List<Enseignant> getEnseignantByNomUniversite(@PathVariable("nomUniversite") String nomUniversite)
+    {
+        return enseignantService.getEnseignantByNomUniversite(nomUniversite);
     }
 
 }

@@ -1,9 +1,12 @@
 package com.kadem.kadem.Controlleur;
+import com.kadem.kadem.Entities.Departement;
 import com.kadem.kadem.Entities.Universite;
 import com.kadem.kadem.Services.UniversiteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -44,5 +47,21 @@ public class UniversiteControlleur {
     {
       return universiteService.deleteUniversite(id);
     }
+    @PostMapping("/addDepartementToUniversite/{nomUniversite}/{nomDepartement}")
+    public String addDepartementToUniversite(@PathVariable("nomDepartement") String nomDepartement,@PathVariable("nomUniversite") String nomUniversite)
+    {
+        return universiteService.addDepartementToUniversite(nomDepartement,nomUniversite);
+    }
+    @GetMapping("/getDepartmentByUniversite/{idUniversite}")
+    public List<Departement> getDepartmentByUniversite(@PathVariable("idUniversite") Long idUniversite)
+    {
+
+        return universiteService.getDepartmentsByUniversite(idUniversite);
+    }
+    @GetMapping("/getChiffreAffaireEntreDeuxDate/{startDate}/{endDate}")
+        public String getChiffreAffaireEntreDeuxDate(@PathVariable("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date sDate , @PathVariable("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date eDate)
+        {
+         return universiteService.getChiffreAffaireEntreDeuxDate(sDate,eDate);
+        }
 }
 
