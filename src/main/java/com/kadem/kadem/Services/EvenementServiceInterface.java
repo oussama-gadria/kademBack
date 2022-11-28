@@ -19,4 +19,6 @@ public interface EvenementServiceInterface {
     void DeleteEvenement (Long Id);
 
 
+    Evenement addEvenementWithClubId (long IdC, Evenement E);
+
 }

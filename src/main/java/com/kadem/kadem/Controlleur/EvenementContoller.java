@@ -45,4 +45,10 @@ public class EvenementContoller {
         EvenementServ.DeleteEvenement(Id);
     }
 
+
+     @PostMapping("/addEvenementWithClubId/{id}")
+    public Evenement addEvenementWithClubId(@PathVariable("id") Long IdC, @RequestBody Evenement E){
+        return EvenementServ.addEvenementWithClubId(IdC,E);
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.kadem.kadem.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,6 +31,7 @@ public class Evenement  implements Serializable {
     private String emplacementEvenement;
 
     @ManyToOne
+    @JsonIgnore
     private Club club;
 
 }
