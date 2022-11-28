@@ -47,6 +47,7 @@ public class DepartementService implements DepartementServiceInterface{
         {
         Departement D1=DepartRep.findById(id).get();
         D1.setNomDepart(D.getNomDepart());
+        D1.setBloc(D.getBloc());
         DepartRep.save(D1);
         return D1;
         }
