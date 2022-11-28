@@ -48,4 +48,8 @@ public class EquipeController {
     public Equipe addEquipeWithDetailEquipe(@PathVariable("id") int id, @RequestBody Equipe e){
         return equipeService.addEquipeWithDetailEquipe(id,e);
     }
+    @PostMapping("/assignEtudiantToEquipe/{prenom}/{nom}/{idEquipe}")
+    public Equipe assignEtudiantToEquipe(@PathVariable("prenom") String prenom,@PathVariable("nom") String nom,@PathVariable("idEquipe") Long idEquipe){
+        return equipeService.assignEtudiantToEquipe(prenom, nom, idEquipe);
+    }
 }

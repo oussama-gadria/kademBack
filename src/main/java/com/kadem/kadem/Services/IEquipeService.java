@@ -13,6 +13,8 @@ public interface IEquipeService {
     public Equipe updateEquipe(Long id , Equipe E);
     public String deleteEquipe(Long id);
     public Equipe addEquipeWithDetailEquipe(int IdDE, Equipe E);
+    public Equipe assignEtudiantToEquipe(String prenom, String nom,Long idEquipe);
+    public Equipe getEquipeByNomUniversite(String nom);
 
 
 }
