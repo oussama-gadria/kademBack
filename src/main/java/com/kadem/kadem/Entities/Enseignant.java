@@ -20,7 +20,9 @@ public class Enseignant implements Serializable {
     public Long idEnseignant;
     public String nomEnseignant;
     public String prenomEnseignant;
-    public String nomDepartement;
+    public String nomMatiere;
+    public String email;
+    public Integer age;
     public Float salaire;
     public Integer experienceParAnnee;
     @JsonIgnore

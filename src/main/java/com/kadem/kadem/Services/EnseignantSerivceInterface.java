@@ -13,5 +13,6 @@ public interface EnseignantSerivceInterface {
     Long deleteEnseignant(Long idEnseignant);
     Enseignant addEnseignantWithUniversite(String nomUniversite,Enseignant enseignant);
     List<Enseignant> getEnseignantByNomUniversite(String nomUniversite);
+    List<Enseignant> triEnseignantBySalary(Long idUniversite);
 
 }

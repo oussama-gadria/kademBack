@@ -29,7 +29,7 @@ public class EnseignantService implements EnseignantSerivceInterface{
         Enseignant upEnsignant =enseignantRepository.findById(idE).get();
         upEnsignant.setNomEnseignant(enseignant.getNomEnseignant());
         upEnsignant.setPrenomEnseignant(enseignant.getPrenomEnseignant());
-        upEnsignant.setNomDepartement(enseignant.getNomDepartement());
+        upEnsignant.setNomMatiere(enseignant.getNomMatiere());
         upEnsignant.setSalaire(enseignant.getSalaire());
         upEnsignant.setExperienceParAnnee(enseignant.getExperienceParAnnee());
         enseignantRepository.save(enseignant);
@@ -70,4 +70,25 @@ public class EnseignantService implements EnseignantSerivceInterface{
     public List<Enseignant> getEnseignantByNomUniversite(String nomUniversite) {
         return enseignantRepository.getEnseignantByNomUniversite(nomUniversite);
     }
+
+    @Override
+    public List<Enseignant> triEnseignantBySalary(Long idUniversite) {
+        Universite univ=universiteRepository.findById(idUniversite).get();
+        List<Enseignant> ListEnseignants=univ.getEnseignant();
+        Integer taille=ListEnseignants.size();
+        for (Integer i=1 ;i<taille;i++)
+        {
+           float salaire=ListEnseignants.get(i).getSalaire();
+           Integer j=i-1;
+            while(j >= 0 && ListEnseignants.get(j).getSalaire() > salaire)
+            {
+                ListEnseignants.set(j+1,ListEnseignants.get(j));
+                j--;
+            }
+            ListEnseignants.get(j+1).setSalaire(salaire);
+        }
+
+        return ListEnseignants;
+    }
+
 }

@@ -69,10 +69,10 @@ public class UniversiteService implements UniversiteServiceInterface{
 
     @Override
     public String getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate) {
-        Float montantCLOUD=0f;
-        Float montantIA=0f;
-        Float montantSECURITE=0f;
-        Float montantRESEAUX=0f;
+        float montantCLOUD=0;
+        float montantIA=0;
+        float montantSECURITE=0;
+        float montantRESEAUX=0;
        List<Contrat> listContrat= (List<Contrat>) contratRepository.findAll();
        for (Contrat contrat:listContrat)
        {

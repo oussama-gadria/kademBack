@@ -56,5 +56,10 @@ public class EnseignantControlleur {
     {
         return enseignantService.getEnseignantByNomUniversite(nomUniversite);
     }
+    @GetMapping("/triEnseignantSelonSalaire/{idUniversite}")
+    public  List<Enseignant> triEnseignantSelonSalaire(@PathVariable("idUniversite")Long idUniversite)
+    {
+        return enseignantService.triEnseignantBySalary(idUniversite);
+    }
 
 }
