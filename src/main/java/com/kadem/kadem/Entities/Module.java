@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,9 +20,9 @@ public class Module {
     private String nomModule;
     private Integer nbrMatieres;
 
-    @OneToOne
-    @JsonIgnore
-    private RespModule respModule;
     @ManyToOne
     private Departement departement;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="module")
+    private List<Enseignant> listEnseignant;
 }

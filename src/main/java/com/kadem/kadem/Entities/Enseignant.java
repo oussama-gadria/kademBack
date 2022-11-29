@@ -24,4 +24,7 @@ public class Enseignant implements Serializable {
     @JsonIgnore
     @ManyToOne
     public Universite universite;
+
+    @ManyToOne
+    private Module module;
 }

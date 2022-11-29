@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DepartementRepository     extends CrudRepository<Departement,Long>{
-
+    Departement findByNomDepart(String nomDepartement);
 
     }
