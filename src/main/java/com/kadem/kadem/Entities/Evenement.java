@@ -32,7 +32,7 @@ public class Evenement  implements Serializable {
     private String emplacementEvenement;
 
     @ManyToOne
-    @JsonIgnore
+
     private Club club;
 
     @ManyToMany(cascade = CascadeType.ALL)
