@@ -3,11 +3,9 @@ package com.kadem.kadem.Services;
 import com.kadem.kadem.Entities.DetailEquipe;
 import com.kadem.kadem.Entities.Equipe;
 import com.kadem.kadem.Entities.Etudiant;
+import com.kadem.kadem.Entities.Evenement;
 import com.kadem.kadem.ExceptionHandling.InvalidIdException;
-import com.kadem.kadem.Repository.DetailEquipeRepository;
-import com.kadem.kadem.Repository.EnseignantRepository;
-import com.kadem.kadem.Repository.EquipeRepository;
-import com.kadem.kadem.Repository.EtudiantRepository;
+import com.kadem.kadem.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +23,8 @@ public class EquipeService implements IEquipeService {
     private EtudiantRepository etudiantRepository;
     @Autowired
     private EnseignantRepository enseignantRepository;
+    @Autowired
+    private EvenementRepository evenementRepository;
     @Override
     public List<Equipe> getListeEquipes(){
         return (List<Equipe>) equipeRepository.findAll();
@@ -100,6 +100,26 @@ public class EquipeService implements IEquipeService {
         else{
             throw new InvalidIdException("Acun enseignant existe avec l'Id:"+idEnseignant);
         }
+    }
+
+    @Override
+    public List<Equipe> triEquipeByScore(Long idEvenement) {
+        Evenement event=evenementRepository.findById(idEvenement).get();
+        List<Equipe> ListEquipes=event.getEquipes();
+        Integer taille=ListEquipes.size();
+        for (Integer i=1 ;i<taille;i++)
+        {
+            Long score=ListEquipes.get(i).getScore();
+            Integer j=i-1;
+            while(j >= 0 && ListEquipes.get(j).getScore() > score)
+            {
+                ListEquipes.set(j+1,ListEquipes.get(j));
+                j--;
+            }
+            ListEquipes.get(j+1).setScore(score);
+        }
+
+        return ListEquipes;
     }
 
 }

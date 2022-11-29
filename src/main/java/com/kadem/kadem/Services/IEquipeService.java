@@ -20,5 +20,7 @@ public interface IEquipeService {
 
     public Equipe assignResponsableToEquipe(Long idEnseignant,Long idEquipe) throws InvalidIdException;
 
+    public List<Equipe> triEquipeByScore(Long idEvenement);
+
 
 }

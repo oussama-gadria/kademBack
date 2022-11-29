@@ -57,4 +57,12 @@ public class EquipeController {
     public Equipe assignResponsableToEquipe(@PathVariable("idEquipe") Long idEquipe,@PathVariable("idEnseignant") Long idEnseignant) throws InvalidIdException {
         return equipeService.assignResponsableToEquipe(idEquipe,idEnseignant);
     }
+
+    @GetMapping("/triEquipeByScore/{idUniversite}")
+    public  List<Equipe> triEquipeByScore(@PathVariable("idEvenement")Long idEvenement)
+    {
+        return equipeService.triEquipeByScore(idEvenement);
+    }
+
+
 }
