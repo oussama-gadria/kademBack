@@ -45,4 +45,20 @@ public class EtudiantController {
     }
 
 
+    /////affecter un étudiant à un département(id Depart)
+    @PostMapping("/addDepartToEtudiantwithID/{idE}/{idD}")
+    public void assignEtudiantToDepartement(@PathVariable("idE") Long idE,@PathVariable("idD") Long idD)
+    {
+        EtudiantServ.assignEtudiantToDepartement(idE,idD);
+    }
+
+    //ajouter et affecter un étudiant à une équipe et un contrat en utilisant une seule méthode
+    @PostMapping("/addEtudiantWithContratAndEquipe/{idContrat}/{idEquipe}")
+    public Etudiant addAndAssignEtudiantToEquipeAndContract (@RequestBody Etudiant E,@PathVariable("idContrat") Long idContrat, @PathVariable("idEquipe") Long idEquipe )
+    {
+        return EtudiantServ.addAndAssignEtudiantToEquipeAndContract(E,idContrat,idEquipe);
+    }
+
+
+
 }

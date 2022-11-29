@@ -5,6 +5,7 @@ import com.kadem.kadem.Entities.Contrat;
 import java.util.List;
 
 public interface ContratServiceInterface {
+    /////CRUD
     String addContrat (Contrat C);
     List<Contrat> GetAllContrats();
     Contrat updateContrat (Long Id,Contrat C );

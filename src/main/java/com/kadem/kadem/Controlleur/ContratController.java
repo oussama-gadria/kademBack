@@ -46,4 +46,11 @@ public class ContratController {
     }
 
 
+
+    /////Affecter un contrat à un étudiant en vérifiant que l’étudiant n’a pas dépassé la limite autorisée de 5 contrats actifs.
+    @PostMapping("/AddEtudiantToContrat/{nom}/{prenom}")
+    public Contrat AddEtudiantToContrat (@RequestBody Contrat C ,@PathVariable("nom") String nom, @PathVariable("prenom") String prenom)
+    {
+        return ContratServ.affectContratToEtudiant(C,nom,prenom);
+    }
 }

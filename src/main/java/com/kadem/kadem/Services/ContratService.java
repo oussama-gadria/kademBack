@@ -71,12 +71,22 @@ public String addContrat (Contrat C)
         {
             if (Ce.getArchive()==false)
             {
-                nb=nb+1;
+               nb=nb+1;
             }
 
         }
+        if (nb<5)
+        {
+            C.setEtudiant(E);
+            return ContratRepo.save(C);
 
+        }
+        else
+        {
         return null;
+       }
+
+
     }
 
 
