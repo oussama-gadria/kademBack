@@ -7,6 +7,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -34,4 +35,6 @@ public class Evenement  implements Serializable {
     @JsonIgnore
     private Club club;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Equipe> equipes;
 }
