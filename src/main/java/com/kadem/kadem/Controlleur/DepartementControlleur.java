@@ -1,5 +1,6 @@
 package com.kadem.kadem.Controlleur;
 
+import com.kadem.kadem.Entities.BLOC;
 import com.kadem.kadem.Entities.Departement;
 import com.kadem.kadem.Services.DepartementService;
 import com.kadem.kadem.Services.DepartementServiceInterface;
@@ -46,6 +47,7 @@ public class DepartementControlleur {
     {
          DepartementService.deleteDepart(id);
     }
+
 
 
 }
