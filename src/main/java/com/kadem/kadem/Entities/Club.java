@@ -26,6 +26,8 @@ public class Club  implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy="club")
     private List<Evenement> evenements;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="clubeq")
-    private List<Equipe> equipes;
+     @ManyToMany(cascade = CascadeType.ALL)
+    private List<Etudiant> etudiantsclub;
+
+
 }
