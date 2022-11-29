@@ -1,7 +1,6 @@
 package com.kadem.kadem.Services;
 
 import com.kadem.kadem.Entities.DetailEquipe;
-import com.kadem.kadem.Entities.Enseignant;
 import com.kadem.kadem.Entities.Equipe;
 import com.kadem.kadem.Entities.Etudiant;
 import com.kadem.kadem.ExceptionHandling.InvalidIdException;
