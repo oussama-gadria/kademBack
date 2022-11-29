@@ -17,15 +17,15 @@ import java.util.List;
 public class Enseignant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long idEnseignant;
-    public String nomEnseignant;
-    public String prenomEnseignant;
-    public String nomMatiere;
-    public String email;
-    public Integer age;
-    public Float salaire;
-    public Integer experienceParAnnee;
-    @JsonIgnore
+    public Long id_Enseignant;
+    public String nom_Enseignant;
+    public String prenom_Enseignant;
+    public String domaine;
+
     @ManyToOne
     public Universite universite;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "enseignant")
+    private List<Equipe> equipes;
+
 }

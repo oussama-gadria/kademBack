@@ -23,8 +23,9 @@ public class Departement implements Serializable{
 
     @Enumerated(EnumType.STRING)
     private BLOC bloc;
-    @OneToOne
-    private RespDepart RD;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="departement")
+    private List<Module> modules;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy="departement")
     private List<Etudiant> etudiants;
 
