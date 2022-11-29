@@ -1,6 +1,7 @@
 package com.kadem.kadem.Controlleur;
 
 import com.kadem.kadem.Entities.Enseignant;
+import com.kadem.kadem.ExceptionHandlerForUnivAndEnseignant.InvalidNameException;
 import com.kadem.kadem.Services.EnseignantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -46,8 +47,7 @@ public class EnseignantControlleur {
     }
 
    @PostMapping("/addEnseignantWithUniversite/{nom}")
-    public Enseignant addEnseignantWithUniversite(@RequestBody() Enseignant e,@PathVariable("nom")String nom)
-    {
+    public Enseignant addEnseignantWithUniversite(@RequestBody() Enseignant e,@PathVariable("nom")String nom) throws InvalidNameException {
         return enseignantService.addEnseignantWithUniversite(nom,e);
 
     }

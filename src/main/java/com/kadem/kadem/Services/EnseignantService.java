@@ -1,7 +1,10 @@
 package com.kadem.kadem.Services;
 
+
 import com.kadem.kadem.Entities.Enseignant;
 import com.kadem.kadem.Entities.Universite;
+import com.kadem.kadem.ExceptionHandlerForUnivAndEnseignant.InvalidNameException;
+import com.kadem.kadem.Repository.DepartementRepository;
 import com.kadem.kadem.Repository.EnseignantRepository;
 import com.kadem.kadem.Repository.UniversiteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,8 @@ public class EnseignantService implements EnseignantSerivceInterface{
     EnseignantRepository enseignantRepository;
     @Autowired
     UniversiteRepository universiteRepository;
+    @Autowired
+    DepartementRepository departementRepository;
     @Override
     public List<Enseignant> retrieveAllEnseignant() {
         return (List<Enseignant>) enseignantRepository.findAll();
@@ -49,28 +54,30 @@ public class EnseignantService implements EnseignantSerivceInterface{
 
 
     @Override
-    public Enseignant addEnseignantWithUniversite(String nomUniversite, Enseignant enseignant) {
+    public Enseignant addEnseignantWithUniversite(String nomUniversite, Enseignant enseignant) throws InvalidNameException {
         Universite univ=universiteRepository.findByNomUniversite(nomUniversite);
-        if (univ!=null)
-        {
+        if (univ!=null) {
         enseignant.setUniversite(univ);
         enseignantRepository.save(enseignant);
         return  enseignant;
-    }
-        else
-        {
-            return null;
         }
-
-
-
+        else {
+            throw new InvalidNameException("universite "+nomUniversite+" n'existe pas ");
+        }
    }
 
     @Override
     public List<Enseignant> getEnseignantByNomUniversite(String nomUniversite) {
         return enseignantRepository.getEnseignantByNomUniversite(nomUniversite);
     }
-
+    //////////////////fonction a completer apres l'ajout de entite module et leur relation ///////////////////////
+    /*
+    @Override
+    public List<Enseignant> getEnseignantByIdUniversiteandIdDepartementandIdModule(Long idUniversite,Long idEnseigenement,Long idDepartement,Long idModule) {
+        return enseignantRepository.getEnseignantByNomUniversite(idUniversite,idEnseigenement,idDepartement,idModule);
+    }
+    */
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public List<Enseignant> triEnseignantBySalary(Long idUniversite) {
         Universite univ=universiteRepository.findById(idUniversite).get();
@@ -90,5 +97,33 @@ public class EnseignantService implements EnseignantSerivceInterface{
 
         return ListEnseignants;
     }
+    //////////////////fonction a completer apres l'ajout de entite module et leur relation ///////////////////////
+    /*
+    @Override
+    public List<Enseignant> triEnseignantBySalaryByUniversiteAndDepartementAndModule(Long idUniversite,Long idDepartement,Long idModule,Long idEnseignant) {
+        Universite univ=universiteRepository.findById(idUniversite).get();
+        List<Departement> ListDepartement=univ.getDepartements();
+       Departement depart=departementRepository.findById(idDepartement).get();
+       List<Moduls> ListModule=depart.getModuls();
+       moduls=modulsRepository.findById(idModule);
 
+
+        List<Enseignant> ListEnseignants=moduls.getEnseignant();
+        Integer taille=ListEnseignants.size();
+        for (Integer i=1 ;i<taille;i++)
+        {
+            float salaire=ListEnseignants.get(i).getSalaire();
+            Integer j=i-1;
+            while(j >= 0 && ListEnseignants.get(j).getSalaire() > salaire)
+            {
+                ListEnseignants.set(j+1,ListEnseignants.get(j));
+                j--;
+            }
+            ListEnseignants.get(j+1).setSalaire(salaire);
+        }
+
+        return ListEnseignants;
+    }
+
+   */
 }

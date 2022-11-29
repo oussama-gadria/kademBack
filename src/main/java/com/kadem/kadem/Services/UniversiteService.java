@@ -54,17 +54,32 @@ public class UniversiteService implements UniversiteServiceInterface{
     public String addDepartementToUniversite(String nomDepartement, String nomUniversite) {
         Universite univ=universiteRepository.findByNomUniversite(nomUniversite);
         Departement dept=departementRepository.findByNomDepart(nomDepartement);
-        List<Departement> ListDepartement=univ.getDepartements();
-        ListDepartement.add(dept);
-        universiteRepository.save(univ);
-        return "Add " +dept.getNomDepart()+ "departement to "+univ.getNomUniversite()+" universite";
-    }
+        if ((univ!=null)&&(dept!=null)) {
+            List<Departement> ListDepartement = univ.getDepartements();
+            ListDepartement.add(dept);
+            universiteRepository.save(univ);
+            return "Add " + dept.getNomDepart() + "departement to " + univ.getNomUniversite() + " universite";
+        }
+        else if((univ==null)&&(dept!=null))
+            {
+                return "l'univeriste"+ nomUniversite+" "+"nexiste pas";
+            }
+        else if((dept==null)&&(univ!=null))
+        {
+            return "le departement "+nomDepartement+" "+"nexiste pas";
+        }
+        else {
+            return"le departement "+ nomDepartement+" et l'univeriste "+nomUniversite+" ne sont pas encore définie";
+        }
+        }
+
     @Override
     public List<Departement> getDepartmentsByUniversite(Long idUniversite)
     {
         Universite univ=universiteRepository.findById(idUniversite).get();
-        return univ.getDepartements();
-
+        if (univ!=null)
+        {return univ.getDepartements();}
+        else return null;
     }
 
     @Override

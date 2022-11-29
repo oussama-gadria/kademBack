@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DepartementRepository     extends CrudRepository<Departement,Long>{
+    //a effacer
     Departement findByNomDepart(String nomDepartement);
     }
