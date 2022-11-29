@@ -1,6 +1,7 @@
 package com.kadem.kadem.Controlleur;
 
 import com.kadem.kadem.Entities.Equipe;
+import com.kadem.kadem.ExceptionHandling.InvalidIdException;
 import com.kadem.kadem.Services.IEquipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -51,5 +52,9 @@ public class EquipeController {
     @PostMapping("/assignEtudiantToEquipe/{prenom}/{nom}/{idEquipe}")
     public Equipe assignEtudiantToEquipe(@PathVariable("prenom") String prenom,@PathVariable("nom") String nom,@PathVariable("idEquipe") Long idEquipe){
         return equipeService.assignEtudiantToEquipe(prenom, nom, idEquipe);
+    }
+    @PostMapping("/assignResponsableToEquipe/{idEquipe}/{idEnseignant}")
+    public Equipe assignResponsableToEquipe(@PathVariable("idEquipe") Long idEquipe,@PathVariable("idEnseignant") Long idEnseignant) throws InvalidIdException {
+        return equipeService.assignResponsableToEquipe(idEquipe,idEnseignant);
     }
 }

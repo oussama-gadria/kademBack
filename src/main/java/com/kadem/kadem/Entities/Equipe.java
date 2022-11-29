@@ -29,14 +29,21 @@ public class Equipe implements Serializable {
 
     private String nomEquipe;
 
+    private Long score;
+
     @Enumerated(EnumType.STRING)
 
     private Niveau niveau;
+
+    private Long Responsable;
 
     @OneToOne
     private DetailEquipe detailEquipe;
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Etudiant> etudiants;
+
+    @ManyToOne
+    Enseignant enseignant;
 
 }

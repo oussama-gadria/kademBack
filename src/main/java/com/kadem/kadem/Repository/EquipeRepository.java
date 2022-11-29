@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EquipeRepository extends CrudRepository<Equipe, Long> {
-    //@Query("select equipe from Equipe equipe join Universite universite on equipe.etudiants member universite.Departments where universite.nomUniv=?1")
-    //public Equipe findByNomUniversité(String nom);
+    @Query("select equipe from Equipe equipe join Etudiant etudiant on etudiant member equipe.etudiants join Departement departement on etudiant member departement.etudiants join Universite universite on departement member universite.departements where universite.nom_universite=?1")
+    public Equipe findByNomUniversité(String nom);
 }
