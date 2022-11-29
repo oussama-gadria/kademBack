@@ -29,13 +29,9 @@ public class Equipe implements Serializable {
 
     private String nomEquipe;
 
-    private Long score;
-
     @Enumerated(EnumType.STRING)
 
     private Niveau niveau;
-
-    private Long Responsable;
 
     @OneToOne
     private DetailEquipe detailEquipe;
@@ -43,7 +39,8 @@ public class Equipe implements Serializable {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Etudiant> etudiants;
 
-    @ManyToOne
-    Enseignant enseignant;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy="equipes")
+    private List<Evenement> evenements;
 
 }
