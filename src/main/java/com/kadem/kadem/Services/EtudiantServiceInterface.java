@@ -2,6 +2,7 @@ package com.kadem.kadem.Services;
 
 import com.kadem.kadem.Entities.Contrat;
 import com.kadem.kadem.Entities.Etudiant;
+import com.kadem.kadem.ExceptionHandlingEtudiantContrat.InvalidExceptionEtudiantContrat;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface EtudiantServiceInterface {
 
 
 
-    Etudiant assignEtudiantToDepartementWithNomD (Etudiant etudiant, String nomDepartement);
+    Etudiant assignEtudiantToDepartementWithNomD (Etudiant etudiant, String nomDepartement) throws InvalidExceptionEtudiantContrat;
 
 
     //ajouter et affecter un étudiant à une équipe et un contrat en utilisant une seule méthode

@@ -7,7 +7,19 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EtudiantRepository extends CrudRepository<Etudiant,Long> {
+
+
     @Query("select etudiant from Etudiant etudiant where etudiant.prenomE=?1 and etudiant.nomE=?2")
     public Etudiant getEtudiantByNomAndPrenom(String prenom, String nom);
-    //Etudiant findEtudiantByNomEAndPrenomE(String prenom,String nom);
+
+    public Etudiant findByNomEAndPrenomE(String nom,String prenom);
+    public Etudiant findByNomEAndPrenomEAndEmail(String nom,String prenom, String email);
+
+    public Etudiant findByEmail(String email);
+
+
+
+
+
+
 }

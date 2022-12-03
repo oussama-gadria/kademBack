@@ -28,4 +28,7 @@ public class Enseignant implements Serializable {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "enseignant")
     private List<Equipe> equipes;
 
+    @ManyToOne
+    private Module module;
+
 }

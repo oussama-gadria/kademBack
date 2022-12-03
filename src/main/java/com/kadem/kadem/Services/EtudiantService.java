@@ -4,6 +4,7 @@ import com.kadem.kadem.Entities.Contrat;
 import com.kadem.kadem.Entities.Departement;
 import com.kadem.kadem.Entities.Equipe;
 import com.kadem.kadem.Entities.Etudiant;
+import com.kadem.kadem.ExceptionHandlingEtudiantContrat.InvalidExceptionEtudiantContrat;
 import com.kadem.kadem.Repository.ContratRepository;
 import com.kadem.kadem.Repository.DepartementRepository;
 import com.kadem.kadem.Repository.EquipeRepository;
@@ -70,9 +71,12 @@ public class EtudiantService  implements EtudiantServiceInterface{
 
     ///ajouter un etudiant avec son departement
     @Override
-    public Etudiant assignEtudiantToDepartementWithNomD(Etudiant etudiant, String nomDepartement) {
+    public Etudiant assignEtudiantToDepartementWithNomD(Etudiant etudiant, String nomDepartement) throws InvalidExceptionEtudiantContrat {
         Departement  departement=departementRepo.findByNomDepart(nomDepartement);
         etudiant.setDepartement(departement);
+        if((etudiantRepo.findByEmail(etudiant.getEmail())!=null)&&(etudiant.getConfirmPassword()!=etudiant.getPassword()) ) throw new InvalidExceptionEtudiantContrat("essayer avec un autre mail et confirm password  ");
+        if (etudiantRepo.findByEmail(etudiant.getEmail())!=null) throw new InvalidExceptionEtudiantContrat("Ce Email existe deja! Essayer avec un autre");
+        if(etudiant.getConfirmPassword()!=etudiant.getPassword()) throw new InvalidExceptionEtudiantContrat("resaisir votre confirm password ");
         return etudiantRepo.save(etudiant);
     }
 
