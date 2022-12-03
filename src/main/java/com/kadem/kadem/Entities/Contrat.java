@@ -30,6 +30,10 @@ public class Contrat implements Serializable {
     private Specialite specialite ;
 
     private Boolean archive ;
+    private Float montantC;
+
+
+
 
 
 }

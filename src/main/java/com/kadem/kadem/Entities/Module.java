@@ -20,9 +20,11 @@ public class Module {
     private String nomModule;
     private Integer nbrMatieres;
 
+    @JsonIgnore
     @ManyToOne
     private Departement departement;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="module")
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy ="module")
     private List<Enseignant> listEnseignant;
 }
