@@ -21,7 +21,11 @@ public class Enseignant implements Serializable {
     public String nom_Enseignant;
     public String prenom_Enseignant;
     public String domaine;
-    @JsonIgnore
+
     @ManyToOne
     public Universite universite;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "enseignant")
+    private List<Equipe> equipes;
+
 }
