@@ -1,6 +1,7 @@
 package com.kadem.kadem.Services;
 
 import com.kadem.kadem.Entities.Enseignant;
+import com.kadem.kadem.ExceptionHandlerForUnivAndEnseignant.InvalidIdException;
 
 
 import java.util.List;
@@ -11,6 +12,10 @@ public interface EnseignantSerivceInterface {
     Enseignant updateEnseignant(Enseignant enseignant,Long idE);
     Enseignant retrieveEnseignant(Long idEnseignant);
     Long deleteEnseignant(Long idEnseignant);
-    Enseignant addEnseignantWithUniversite(Long idUniversite,Enseignant enseignant);
+    Enseignant addEnseignantToModule(Long IdModule,Enseignant enseignant) throws InvalidIdException;
+   List<Enseignant> getEnseignantByIdUniversiteandIdDepartementandIdModule(Long idUniversite, Long idDepartement, Long idModule);
+    List<Enseignant> triEnseignantBySalary(Long idUniversite, Long idDepartement, Long idModule);
+
+
 
 }
