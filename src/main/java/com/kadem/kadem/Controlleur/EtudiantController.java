@@ -12,51 +12,51 @@ import java.util.List;
 
 public class EtudiantController {
     @Autowired
-    private EtudiantServiceInterface EtudiantServ;
+    private EtudiantServiceInterface etudiantServ;
 
     @PostMapping("/addEtudiant")
     public String addEtudiant (@RequestBody Etudiant E )
     {
-        return EtudiantServ.addEtudiant(E);
+        return etudiantServ.addEtudiant(E);
     }
 
     @GetMapping("/getAllEtudiant")
     public List<Etudiant> getAllEtudiant ()
     {
-        return EtudiantServ.GetAllEtudiants();
+        return etudiantServ.GetAllEtudiants();
     }
 
     @GetMapping("/getEtudiantbyId/{id}")
     public Etudiant getEtudiantById(@PathVariable("id") Long Id )
     {
-        return EtudiantServ.GetEtudiantById(Id);
+        return etudiantServ.GetEtudiantById(Id);
     }
 
     @PutMapping("/updateEtudiant/{id}")
     public Etudiant updateEtudiant(@PathVariable("id") Long Id,@RequestBody Etudiant E)
     {
-        return EtudiantServ.updateEtudiant(Id,E);
+        return etudiantServ.updateEtudiant(Id,E);
     }
 
     @DeleteMapping("/deleteEtudiant/{id}")
     public void DeleteEtudiant(@PathVariable("id") Long Id)
     {
-        EtudiantServ.DeleteEtudiant(Id);
+        etudiantServ.DeleteEtudiant(Id);
     }
 
 
-    /////affecter un étudiant à un département(id Depart)
-    @PostMapping("/addDepartToEtudiantwithID/{idE}/{idD}")
-    public void assignEtudiantToDepartement(@PathVariable("idE") Long idE,@PathVariable("idD") Long idD)
+    /////affecter un étudiant à un département(nom depart)
+    @PostMapping("/AddEtudiantWithDepart/{nomDepartement}")
+    public Etudiant assignEtudiantToDepartement(@PathVariable("nomDepartement") String nomDepartement, @RequestBody Etudiant etudiant)
     {
-        EtudiantServ.assignEtudiantToDepartement(idE,idD);
+       return  etudiantServ.assignEtudiantToDepartementWithNomD(etudiant,nomDepartement);
     }
 
     //ajouter et affecter un étudiant à une équipe et un contrat en utilisant une seule méthode
     @PostMapping("/addEtudiantWithContratAndEquipe/{idContrat}/{idEquipe}")
     public Etudiant addAndAssignEtudiantToEquipeAndContract (@RequestBody Etudiant E,@PathVariable("idContrat") Long idContrat, @PathVariable("idEquipe") Long idEquipe )
     {
-        return EtudiantServ.addAndAssignEtudiantToEquipeAndContract(E,idContrat,idEquipe);
+        return etudiantServ.addAndAssignEtudiantToEquipeAndContract(E,idContrat,idEquipe);
     }
 
 

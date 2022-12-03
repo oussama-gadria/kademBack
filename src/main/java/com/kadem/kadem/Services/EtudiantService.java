@@ -68,16 +68,14 @@ public class EtudiantService  implements EtudiantServiceInterface{
 
     }
 
-
-    ////affecter un étudiant à un département(id Depart)
+    ///ajouter un etudiant avec son departement
     @Override
-    public void assignEtudiantToDepartement(Long etudiantId, Long departementId) {
-        Etudiant E=etudiantRepo.findById(etudiantId).get();
-        Departement D= departementRepo.findById(departementId).get();
-        E.setDepartement(D);
-        etudiantRepo.save(E);
-
+    public Etudiant assignEtudiantToDepartementWithNomD(Etudiant etudiant, String nomDepartement) {
+        Departement  departement=departementRepo.findByNomDepart(nomDepartement);
+        etudiant.setDepartement(departement);
+        return etudiantRepo.save(etudiant);
     }
+
 
     //ajouter et affecter un étudiant à une équipe et un contrat en utilisant une seule méthode
     @Override
@@ -95,7 +93,7 @@ public class EtudiantService  implements EtudiantServiceInterface{
             equipe.setEtudiants(lE);
 
         }
-contratRepo.save(contrat);
+        contratRepo.save(contrat);
         equipeRepo.save(equipe);
 
         return etudiant;

@@ -2,6 +2,7 @@ package com.kadem.kadem.Services;
 
 import com.kadem.kadem.Entities.Contrat;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ContratServiceInterface {
@@ -12,6 +13,8 @@ public interface ContratServiceInterface {
     Contrat GetContratById (Long Id);
     void DeleteContrat(Long Id);
 
-    /////Affecter un contrat à un étudiant en vérifiant que l’étudiant n’a pas dépassé la limite autorisée de 5 contrats actifs.
-    Contrat affectContratToEtudiant (Contrat C, String nomE,String prenomE);
+
+    Contrat affectContratToEtudiant (Contrat contrat, String nomE,String prenomE, String Email);
+
+    List<Contrat> getALLcontratsByIdEtudiant(Long idEtudiant, Date dateDebut, Date dateFin, boolean x);
 }
