@@ -63,17 +63,14 @@ public class UniversiteControlleur {
 
         return universiteService.getDepartmentsByUniversite(idUniversite);
     }
+
     @GetMapping("/getChiffreAffaireEntreDeuxDate/{startDate}/{endDate}")
         public String getChiffreAffaireEntreDeuxDate(@PathVariable("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date sDate , @PathVariable("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date eDate)
         {
          return universiteService.getChiffreAffaireEntreDeuxDate(sDate,eDate);
         }
-        ///
-    @PostMapping("/addmoduletodepartement/{id}")
-    public Module attdepartementtomodule(@PathVariable("id") Long id,@RequestBody() Module module)
-    {
-        return moduleService.addModuleToDepartement(id,module);
-    }
+
+
     @GetMapping("/detailsUniversite/{id}")
     public String getDetailsUiversite(@PathVariable("id")Long id)
     {

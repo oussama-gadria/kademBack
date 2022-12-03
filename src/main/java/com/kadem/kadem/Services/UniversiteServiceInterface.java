@@ -15,7 +15,7 @@ public interface UniversiteServiceInterface {
     Long deleteUniversite(Long idUniversite);
     String addDepartementToUniversite(Long idDepartement,Long idUniversite);
     List<Departement> getDepartmentsByUniversite(Long idUniv);
-   /* String getChiffreAffaireEntreDeuxDate(Date startDate,Date endDate);*/
+    String getChiffreAffaireEntreDeuxDate(Date startDate,Date endDate);
     String getAllDetailsUniversiteByIdUniversite(Long idUniversite);
     List<Evenement> getEvenementByNameUniversite(Long idUniversite,Date DateDebutEvenement,Date DateFinEvenement);
 }
