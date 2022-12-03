@@ -1,5 +1,6 @@
 package com.kadem.kadem.Controlleur;
 
+import com.kadem.kadem.Entities.Club;
 import com.kadem.kadem.Entities.Departement;
 import com.kadem.kadem.Entities.Module;
 import com.kadem.kadem.Services.DepartementServiceInterface;
@@ -13,36 +14,57 @@ import java.util.List;
 @RequestMapping("/Module")
 public class ModuleControlleur {
     @Autowired
-    private ModuleServiceInterface ModuleService;
+    private ModuleServiceInterface moduleService;
+
+
 
 
     @PostMapping("/addModule")
     public String addModule (@RequestBody() Module M)
     {
-        return ModuleService.addModule(M);
+        return moduleService.addModule(M);
     }
 
     @GetMapping("/getAllModules")
-    public List<Module> getListeModules() {return ModuleService.getListeModules();}
+    public List<Module> getListeModules() {return moduleService.getListeModules();}
 
 
     @GetMapping("/getModuleById/{id}")
     public Module getModuleById(@PathVariable("id") Long id)
     {
-        return ModuleService.getModuleById(id);
+        return moduleService.getModuleById(id);
     }
 
     @PutMapping("/updateModule/{id}")
     public Module updateModule(@PathVariable("id")Long id,  @RequestBody() Module M )
     {
-        return ModuleService.updateModule(id,M);
+        return moduleService.updateModule(id,M);
     }
 
     @DeleteMapping("/deleteModule/{id}")
     public void deleteModule (@PathVariable("id") Long id)
     {
-        ModuleService.deleteModule(id);
+        moduleService.deleteModule(id);
     }
+
+    @GetMapping("/getModuleByDepName/{NomDep}")
+    public List<Module> getModuleByDepName (@PathVariable("NomDep") String NomDep)
+    {
+        return moduleService.getModuleByDepName(NomDep);
+    }
+
+    @PostMapping("/addmoduletodepartement/{NomDep}")
+    public Module attdepartementtomodule(@PathVariable("NomDep") String NomDep,@RequestBody() Module module)
+    {
+        return moduleService.addModuleToDepartement(NomDep,module);
+    }
+
+    @GetMapping("/FindClubByDepAndUnivName/{nomUniv}/{nomDepart}")
+    List<Club> FindClubByDepAndUnivName (@PathVariable("nomUniv") String nomUniv, @PathVariable("nomDepart") String nomDepart )
+    {
+        return moduleService.FindClubByDepAndUnivName(nomUniv,nomDepart);
+    }
+
 
 
 }

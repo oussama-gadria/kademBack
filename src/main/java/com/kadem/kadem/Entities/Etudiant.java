@@ -2,6 +2,7 @@ package com.kadem.kadem.Entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,10 +28,11 @@ public class Etudiant implements Serializable {
     @Enumerated(EnumType.STRING)
     private Option option;
 
-    @JsonIgnore
+
     @ManyToMany(mappedBy="etudiants",cascade=CascadeType.ALL)
     private List<Equipe> equipes;
 
+    @JsonIgnoreProperties("etudiants")
     @ManyToOne
     private Departement departement;
 

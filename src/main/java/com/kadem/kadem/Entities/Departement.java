@@ -1,5 +1,6 @@
 package com.kadem.kadem.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,9 +24,12 @@ public class Departement implements Serializable{
 
     @Enumerated(EnumType.STRING)
     private BLOC bloc;
+
+    @JsonIgnoreProperties("departement")
     @OneToMany(cascade = CascadeType.ALL, mappedBy="departement")
     private List<Module> modules;
 
+    @JsonIgnoreProperties("departement")
     @OneToMany(cascade = CascadeType.ALL, mappedBy="departement")
     private List<Etudiant> etudiants;
 

@@ -3,6 +3,7 @@ package com.kadem.kadem.Services;
 import com.kadem.kadem.Entities.Club;
 import com.kadem.kadem.Repository.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,6 +49,8 @@ public class ClubService implements ClubServiceInterface {
         ClubRepo.deleteById(Id);
 
     }
+
+
 
 
 

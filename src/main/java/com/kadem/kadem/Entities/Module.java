@@ -1,6 +1,7 @@
 package com.kadem.kadem.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,9 +21,12 @@ public class Module {
     private String nomModule;
     private Integer nbrMatieres;
 
+
+    @JsonIgnoreProperties("modules")
     @ManyToOne
     private Departement departement;
 
+    @JsonIgnoreProperties("module")
     @OneToMany(cascade = CascadeType.ALL, mappedBy="module")
     private List<Enseignant> listEnseignant;
 }
