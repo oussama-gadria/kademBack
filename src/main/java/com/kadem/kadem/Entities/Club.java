@@ -1,5 +1,6 @@
 package com.kadem.kadem.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -24,12 +25,17 @@ public class Club  implements Serializable {
 
     private String nomClub;
 
+
+    @JsonIgnoreProperties("club")
     @OneToMany(cascade = CascadeType.ALL, mappedBy="club")
     private List<Evenement> evenements;
 
     @JsonIgnoreProperties("clubs")
-    @ManyToMany(cascade = CascadeType.ALL)
+     @ManyToMany(cascade = CascadeType.ALL)
     private List<Etudiant> etudiantsclub;
 
+    @JsonIgnoreProperties("clubsResponsable")
+    @ManyToOne
+    private  Etudiant ResponsableClub;
 
 }
