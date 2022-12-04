@@ -2,6 +2,7 @@ package com.kadem.kadem.Controlleur;
 
 import com.kadem.kadem.Entities.Club;
 import com.kadem.kadem.Entities.Departement;
+import com.kadem.kadem.Entities.Enseignant;
 import com.kadem.kadem.Entities.Module;
 import com.kadem.kadem.Services.DepartementServiceInterface;
 import com.kadem.kadem.Services.ModuleServiceInterface;
@@ -65,6 +66,10 @@ public class ModuleControlleur {
         return moduleService.FindClubByDepAndUnivName(nomUniv,nomDepart);
     }
 
-
+    @GetMapping("/triEnseignantByExp/{idUniversite}/{idDepartement}/{idModule}")
+    public  List<Enseignant> triEnseignantByExp(@PathVariable("idUniversite")Long idUniversite, @PathVariable("idDepartement") Long idDepartement , @PathVariable("idModule") Long idModule)
+    {
+        return moduleService.triEnseignantByExp(idUniversite,idDepartement,idModule);
+    }
 
 }

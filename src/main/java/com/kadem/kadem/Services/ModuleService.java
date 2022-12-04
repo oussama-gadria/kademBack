@@ -2,9 +2,11 @@ package com.kadem.kadem.Services;
 
 import com.kadem.kadem.Entities.Club;
 import com.kadem.kadem.Entities.Departement;
+import com.kadem.kadem.Entities.Enseignant;
 import com.kadem.kadem.Entities.Module;
 import com.kadem.kadem.Repository.ClubRepository;
 import com.kadem.kadem.Repository.DepartementRepository;
+import com.kadem.kadem.Repository.EnseignantRepository;
 import com.kadem.kadem.Repository.ModuleRepository;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,13 @@ public class ModuleService implements ModuleServiceInterface {
     ///
 
     @Autowired
-    private DepartementRepository DepRep;
+    private DepartementRepository depRep;
 
     @Autowired
     private ClubRepository ClubRepo;
+
+    @Autowired
+    private EnseignantRepository enseignantRep;
 
 
     @Override
@@ -75,25 +80,25 @@ public class ModuleService implements ModuleServiceInterface {
 
     @Override
     public List<Module> getModuleByDepName(String NomDep){
-        Departement D=DepRep.findByNomDepart(NomDep);
+        Departement D=depRep.findByNomDepart(NomDep);
         return D.getModules();
     }
 
     @Override
     public Module addModuleToDepartement(String NomDep, Module module) {
-        Departement departement = DepRep.findByNomDepart(NomDep);
+        Departement departement = depRep.findByNomDepart(NomDep);
         List<Module> listModule = departement.getModules();
         ModuleRep.save(module);
         if(module.getDepartement()!=null) {
             listModule.add(module);
-            DepRep.save(departement);
+            depRep.save(departement);
         }
         else{
             Departement departement1=new Departement();
             departement1=departement;
             module.setDepartement(departement1);
             listModule.add(module);
-            DepRep.save(departement);
+            depRep.save(departement);
 
         }
         return module;
@@ -101,8 +106,29 @@ public class ModuleService implements ModuleServiceInterface {
 
     @Override
     public List<Club> FindClubByDepAndUnivName(String nomUniv, String nomDepart){
-        return ClubRepo.FindClubByDepAndUnivName(nomUniv,nomDepart);
+        return ModuleRep.FindClubByDepAndUnivName(nomUniv,nomDepart);
     }
+
+    @Override
+    public List<Enseignant> triEnseignantByExp(Long idUniversite, Long idDepartement, Long idModule) {
+        List<Enseignant> ListEnseignants=enseignantRep.getEnseignantByIdUniversiteAndIdUnivAndIdModule(idUniversite,idDepartement,idModule);
+        Integer taille=ListEnseignants.size();
+        for (Integer i=1 ;i<taille;i++){
+            Integer expAnnee=ListEnseignants.get(i).getExperienceParAnnee();
+            Integer j=i-1;
+            while(j >= 0 && ListEnseignants.get(j).getExperienceParAnnee() > expAnnee)
+            {
+                Enseignant e=ListEnseignants.get(j+1);
+                ListEnseignants.set(j+1,ListEnseignants.get(j));
+                ListEnseignants.set(j,e);
+                j--;
+            }
+
+        }
+
+        return ListEnseignants;
+    }
+
 
 }
 

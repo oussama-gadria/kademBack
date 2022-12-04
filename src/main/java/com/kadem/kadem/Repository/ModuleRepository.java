@@ -14,6 +14,6 @@ import java.util.List;
 public interface ModuleRepository extends CrudRepository<Module,Long> {
     public Module findByNomModule(String nomModule);
 
-    @Query("select club from Club club join Etudiant etudiant on club member etudiant.clubs join Departement  departement on etudiant member departement.etudiants join Universite universite on departement member universite.departements where universite.nom_universite=?1 and departement.nomDepart=?2 ")
+    @Query("select club from Club club join Etudiant etudiant on club member etudiant.clubs join Departement  departement on etudiant member departement.etudiants join Universite universite on departement member universite.departements where universite.nomUniversite=?1 and departement.nomDepart=?2 ")
     public List<Club> FindClubByDepAndUnivName(String nomUniv, String nomDepart);
 }
