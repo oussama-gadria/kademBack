@@ -58,11 +58,20 @@ public class EquipeController {
         return equipeService.assignResponsableToEquipe(idEquipe,idEnseignant);
     }
 
-    @GetMapping("/triEquipeByScore/{idUniversite}")
+     @GetMapping("/nbEtudiants/{idEquipe}/{option}")
+    public long nbEtudiantsByOption(@PathVariable("idEquipe") Long idEquipe, @PathVariable("option") String option)
+     {
+         return equipeService.getNbEtudiantsInEquipeWithOption(idEquipe,option);
+     }
+    @GetMapping("/getNbEtudiantsInEquipeWithNomDepartement/{idEquipe}/{nomDepartement}")
+    public long getNbEtudiantsInEquipeWithNomDepartement(@PathVariable("idEquipe") Long idEquipe, @PathVariable("nomDepartement") String nomDepartement)
+    {
+        return equipeService.getNbEtudiantsInEquipeWithNomDepartement(idEquipe,nomDepartement);
+    }
+    @GetMapping("/triEquipeByScore/{idEvenement}")
     public  List<Equipe> triEquipeByScore(@PathVariable("idEvenement")Long idEvenement)
     {
         return equipeService.triEquipeByScore(idEvenement);
     }
-
 
 }

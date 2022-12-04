@@ -1,7 +1,9 @@
 package com.kadem.kadem.Services;
 
 import com.kadem.kadem.Entities.Departement;
+import com.kadem.kadem.Entities.Etudiant;
 import com.kadem.kadem.Repository.DepartementRepository;
+import com.kadem.kadem.Repository.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,9 @@ public class DepartementService implements DepartementServiceInterface{
 
     @Autowired
     private DepartementRepository DepartRep;
+    @Autowired
+    private EtudiantRepository etudiantRepository;
+
 
 
     @Override
@@ -61,5 +66,6 @@ public class DepartementService implements DepartementServiceInterface{
         DepartRep.deleteById(id);
 
     }
+
 
 }

@@ -15,11 +15,9 @@ public interface IEquipeService {
     public String deleteEquipe(Long id);
     public Equipe addEquipeWithDetailEquipe(int IdDE, Equipe E);
     public Equipe assignEtudiantToEquipe(String prenom, String nom,Long idEquipe);
-    public Equipe getEquipeByNomUniversite(String nom);
-    //public List<Equipe> triEquipeByScore(Long idEquipe);
-
     public Equipe assignResponsableToEquipe(Long idEnseignant,Long idEquipe) throws InvalidIdException;
-
+    public long getNbEtudiantsInEquipeWithOption(Long idEquipe,String option);
+    public int getNbEtudiantsInEquipeWithNomDepartement(Long idEquipe,String nomDepartement);
     public List<Equipe> triEquipeByScore(Long idEvenement);
 
 
