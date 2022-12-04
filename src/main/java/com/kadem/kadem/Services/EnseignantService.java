@@ -86,12 +86,12 @@ public class EnseignantService implements EnseignantSerivceInterface{
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
    @Override
     public List<Enseignant> getEnseignantByIdUniversiteandIdDepartementandIdModule(Long idUniversite,Long idDepartement,Long idModule) {
-        return enseignantRepository.getEnseignantByIdUniversiteAndIdUnivAndIdModule(idUniversite,idDepartement,idModule);
+        return enseignantRepository.getEnseignantByIdUniversiteAndIdDepartementAndIdModule(idUniversite,idDepartement,idModule);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public List<Enseignant> triEnseignantBySalary(Long idUniversite,Long idDepartement,Long idModule) {
-        List<Enseignant> ListEnseignants=enseignantRepository.getEnseignantByIdUniversiteAndIdUnivAndIdModule(idUniversite,idDepartement,idModule);
+        List<Enseignant> ListEnseignants=enseignantRepository.getEnseignantByIdUniversiteAndIdDepartementAndIdModule(idUniversite,idDepartement,idModule);
         Integer taille=ListEnseignants.size();
         for (Integer i=1 ;i<taille;i++){
             float salaire=ListEnseignants.get(i).getSalaire();
