@@ -11,23 +11,23 @@ import java.util.List;
 public class DepartementService implements DepartementServiceInterface{
 
     @Autowired
-    private DepartementRepository DepartRep;
+    private DepartementRepository departRep;
 
 
     @Override
     public List<Departement> getListeDeparts() {
-        return (List<Departement>) DepartRep.findAll();
+        return (List<Departement>) departRep.findAll();
     }
 
     @Override
     public Departement getDepartById(Long id) {
-        Departement C=DepartRep.findById(id).get();
+        Departement C=departRep.findById(id).get();
         return C ;
     }
 
     @Override
     public String addDepart(Departement D) {
-        Departement D1= DepartRep.save(D);
+        Departement D1= departRep.save(D);
         if (D1!=null)
         {
             return("Departement ajouté ");
@@ -43,11 +43,12 @@ public class DepartementService implements DepartementServiceInterface{
 
     @Override
     public Departement updateDepart(Long id, Departement D) {
-        if(DepartRep.existsById(id))
+        if(departRep.existsById(id))
         {
-        Departement D1=DepartRep.findById(id).get();
+        Departement D1=departRep.findById(id).get();
         D1.setNomDepart(D.getNomDepart());
-        DepartRep.save(D1);
+        D1.setBloc(D.getBloc());
+            departRep.save(D1);
         return D1;
         }
         else
@@ -58,7 +59,7 @@ public class DepartementService implements DepartementServiceInterface{
     @Override
     public void deleteDepart(Long id) {
 
-        DepartRep.deleteById(id);
+        departRep.deleteById(id);
 
     }
 
