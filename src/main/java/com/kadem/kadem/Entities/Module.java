@@ -23,8 +23,6 @@ public class Module {
     @JsonIgnore
     @ManyToOne
     private Departement departement;
-
-
     @OneToMany(cascade = CascadeType.ALL,mappedBy ="module")
     private List<Enseignant> listEnseignant;
 }
