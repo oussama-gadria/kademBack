@@ -25,7 +25,6 @@ public class DetailEquipe implements Serializable {
     private Integer salle;
 
     private String thematique;
-
     @JsonIgnore
     @OneToOne(mappedBy = "detailEquipe")
     private Equipe equipe;

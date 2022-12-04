@@ -1,5 +1,6 @@
 package com.kadem.kadem.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,7 +27,8 @@ public class Club  implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy="club")
     private List<Evenement> evenements;
 
-     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("clubs")
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Etudiant> etudiantsclub;
 
 

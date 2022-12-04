@@ -1,5 +1,7 @@
 package com.kadem.kadem.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,6 +32,12 @@ public class Contrat implements Serializable {
     private Specialite specialite ;
 
     private Boolean archive ;
+    private Float montantC;
+
+
+    @JsonIgnoreProperties("contrats")
+    @ManyToOne
+    private Etudiant etudiant;
 
 
 }
