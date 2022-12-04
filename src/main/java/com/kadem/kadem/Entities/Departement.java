@@ -1,6 +1,5 @@
 package com.kadem.kadem.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -25,6 +24,8 @@ public class Departement implements Serializable{
 
     @Enumerated(EnumType.STRING)
     private BLOC bloc;
+
+    @JsonIgnoreProperties("departement")
     @OneToMany(cascade = CascadeType.ALL, mappedBy="departement")
     private List<Module> modules;
 

@@ -23,4 +23,6 @@ public interface ClubServiceInterface {
 
     public List<Club> GetClubsByIdEtudiant(Long idEtudiant) ;
 
+
+
 }
