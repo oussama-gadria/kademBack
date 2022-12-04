@@ -83,12 +83,6 @@ public class EquipeService implements IEquipeService {
         return equipe;
     }
 
-   // @Override
-    public Equipe getEquipeByNomUniversite(String nom) {
-        Equipe E=equipeRepository.findByNomUniversité(nom);
-        return E;
-    }
-
     @Override
     public Equipe assignResponsableToEquipe(Long idEquipe,Long idEnseignant) throws InvalidIdException{
         Optional enseignant=enseignantRepository.findById(idEnseignant);
@@ -100,6 +94,18 @@ public class EquipeService implements IEquipeService {
         else{
             throw new InvalidIdException("Acun enseignant existe avec l'Id:"+idEnseignant);
         }
+    }
+
+    @Override
+    public long getNbEtudiantsInEquipeWithOption(Long idEquipe, String option) {
+        return equipeRepository.findById(idEquipe).get().getEtudiants()
+                .stream().filter(e->e.getOption().toString().equals(option)).count();
+    }
+
+    @Override
+    public int getNbEtudiantsInEquipeWithNomDepartement(Long idEquipe, String nomDepartement) {
+        return (int) equipeRepository.findById(idEquipe).get().getEtudiants()
+                .stream().filter(e->e.getDepartement().getNomDepart().equals(nomDepartement)).count();
     }
 
     @Override
@@ -121,5 +127,6 @@ public class EquipeService implements IEquipeService {
 
         return ListEquipes;
     }
+
 
 }
