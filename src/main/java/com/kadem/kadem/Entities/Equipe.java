@@ -44,13 +44,12 @@ public class Equipe implements Serializable {
 
     @OneToOne
     private DetailEquipe detailEquipe;
-
-
+    @JsonIgnoreProperties("equipes")
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Etudiant> etudiants;
 
-    @JsonIgnoreProperties("equipes")
     @ManyToMany(cascade = CascadeType.ALL, mappedBy="equipes")
     private List<Evenement> evenements;
+
 
 }

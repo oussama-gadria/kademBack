@@ -10,4 +10,5 @@ public interface DepartementServiceInterface {
     public String addDepart(Departement D);
     public Departement updateDepart(Long id , Departement D);
     public void deleteDepart(Long id);
+
 }
