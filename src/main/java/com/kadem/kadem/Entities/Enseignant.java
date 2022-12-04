@@ -30,8 +30,9 @@ public class Enseignant implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy ="enseignant")
     private List<Equipe> equipes;
-    @JsonIgnoreProperties("departement")
+    @JsonIgnoreProperties("listEnseignant")
     @ManyToOne
     private Module module;
+
 
 }

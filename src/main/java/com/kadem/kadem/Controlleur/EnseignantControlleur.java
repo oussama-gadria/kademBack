@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/Enseignant")
 public class EnseignantControlleur {
     @Autowired
@@ -58,7 +59,7 @@ public class EnseignantControlleur {
     }
 
 
-    @GetMapping("/triEnseignantSelonSalaire/{idUniversite}/{idDepartement}/{idModule}")
+    @GetMapping("/triEnseignantBySalary/{idUniversite}/{idDepartement}/{idModule}")
     public  List<Enseignant> triEnseignantSelonSalaire(@PathVariable("idUniversite")Long idUniversite,@PathVariable("idDepartement") Long idDepartement ,@PathVariable("idModule") Long idModule)
     {
         return enseignantService.triEnseignantBySalary(idUniversite,idDepartement,idModule);

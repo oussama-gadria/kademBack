@@ -1,6 +1,7 @@
 package com.kadem.kadem.Services;
 
 import com.kadem.kadem.Entities.*;
+import com.kadem.kadem.Entities.Module;
 import com.kadem.kadem.Repository.ContratRepository;
 import com.kadem.kadem.Repository.DepartementRepository;
 import com.kadem.kadem.Repository.EvenementRepository;
@@ -156,7 +157,7 @@ public class UniversiteService implements UniversiteServiceInterface{
             numberOfStudent=numberOfStudent+department.getEtudiants().size();
         }
         for (Departement departement:departements) {
-            details1=details1+"le departement "+departement.getNomDepart()+" contient "+(departement.getModules().size())+" module qui est reparti comme suit :";
+            details1=details1+"le departement "+departement.getNomDepart()+" contient "+(departement.getModules().size())+" module qui sont :";
         for (Module module:departement.getModules()) {
             details2 = details2 + "\n" + module.getNomModule() + " qui contient " + (module.getListEnseignant().size()) + " enseignant";
         }
