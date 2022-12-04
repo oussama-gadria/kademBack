@@ -34,7 +34,5 @@ public class Enseignant implements Serializable {
     @ManyToOne
     private Module module;
 
-    @ManyToOne
-    private Module module;
 
 }

@@ -2,6 +2,7 @@ package com.kadem.kadem.Controlleur;
 
 import com.kadem.kadem.Entities.Contrat;
 import com.kadem.kadem.Entities.Etudiant;
+import com.kadem.kadem.ExceptionHandlingEtudiantContrat.InvalidExceptionEtudiantContrat;
 import com.kadem.kadem.Services.ContratServiceInterface;
 import com.kadem.kadem.Services.EtudiantServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,13 +47,23 @@ public class ContratController {
 
     /////Affecter un contrat à un étudiant en vérifiant que l’étudiant n’a pas dépassé la limite autorisée de 5 contrats actifs.
     @PostMapping("/AddEtudiantToContrat/{nom}/{prenom}/{email}")
-    public Contrat AddEtudiantToContrat(@RequestBody Contrat contrat, @PathVariable("nom") String nom, @PathVariable("prenom") String prenom, @PathVariable("email") String email) {
+    public Contrat AddEtudiantToContrat(@RequestBody Contrat contrat, @PathVariable("nom") String nom, @PathVariable("prenom") String prenom, @PathVariable("email") String email) throws InvalidExceptionEtudiantContrat {
         return contratServ.affectContratToEtudiant(contrat, nom, prenom, email);
     }
 
     ////afficher les contrats d'un etudiant avec filtrage
     @GetMapping("/filterContratByEtudiant/{idEtudiant}/{startDate}/{EndDate}/{archive}")
-    public List<Contrat> filterContratByEtudiant(@PathVariable("idEtudiant") Long IdEtudiant, @PathVariable("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate, @PathVariable("EndDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date EndDate, @PathVariable("archive") boolean archive) {
-        return contratServ.getALLcontratsByIdEtudiant(IdEtudiant, startDate, EndDate, archive);
+    public List<Contrat> filterContratByEtudiant(@PathVariable("idEtudiant") Long IdEtudiant, @PathVariable("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate, @PathVariable("EndDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date EndDate, @PathVariable("archive") boolean archive) throws InvalidExceptionEtudiantContrat  {
+
+        return contratServ.getALLcontratsByIdEtudiantwithFiltrage(IdEtudiant, startDate, EndDate, archive);
     }
+
+    @GetMapping("/getContratByidEtudiant/{idEtudiant}")
+    public List<Contrat> getContratByidEtudiant(@PathVariable("idEtudiant") Long IdEtudiant) {
+
+        return contratServ.getContratByIdEtudiant(IdEtudiant);
+    }
+
+
+
 }

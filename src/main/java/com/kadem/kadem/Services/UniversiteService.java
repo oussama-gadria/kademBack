@@ -1,6 +1,7 @@
 package com.kadem.kadem.Services;
 
 import com.kadem.kadem.Entities.*;
+import com.kadem.kadem.Entities.Module;
 import com.kadem.kadem.Repository.ContratRepository;
 import com.kadem.kadem.Repository.DepartementRepository;
 import com.kadem.kadem.Repository.EvenementRepository;

@@ -2,6 +2,7 @@ package com.kadem.kadem.Services;
 
 import com.kadem.kadem.Entities.Contrat;
 import com.kadem.kadem.Entities.Etudiant;
+import com.kadem.kadem.ExceptionHandlingEtudiantContrat.InvalidExceptionEtudiantContrat;
 import com.kadem.kadem.Repository.ContratRepository;
 import com.kadem.kadem.Repository.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +67,7 @@ public String addContrat (Contrat C)
 
     /////Affecter un contrat à un étudiant en vérifiant que l’étudiant n’a pas dépassé la limite autorisée de 5 contrats actifs.
     @Override
-    public Contrat affectContratToEtudiant(Contrat contrat, String nomE, String prenomE, String emailEtudiant) {
+    public Contrat affectContratToEtudiant(Contrat contrat, String nomE, String prenomE, String emailEtudiant) throws InvalidExceptionEtudiantContrat {
 
         Etudiant etudiant=EtudiantRepo.findByNomEAndPrenomEAndEmail(nomE,prenomE,emailEtudiant);
 
@@ -77,16 +78,27 @@ public String addContrat (Contrat C)
         }
         else
         {
-        return null;
+            throw new InvalidExceptionEtudiantContrat("vous avez déja 5 contrat actifs! Vous ne pouvez plus ajouter un autre contrat.");
        }
 
 
     }
     ////afficher les contrats d'un etudiant avec filtrage
     @Override
-    public List<Contrat> getALLcontratsByIdEtudiant(Long idEtudiant, Date dateDebut, Date dateFin, boolean x) {
+    public List<Contrat> getALLcontratsByIdEtudiantwithFiltrage(Long idEtudiant, Date dateDebut, Date dateFin, boolean x) throws InvalidExceptionEtudiantContrat {
+        if (contratRepo.filterContratByEtudiant(idEtudiant, dateDebut, dateFin, x).isEmpty()) {
+            throw new InvalidExceptionEtudiantContrat("Aucune resultat trouvées ");
+        }
+        else
+        {
+            return contratRepo.filterContratByEtudiant(idEtudiant, dateDebut, dateFin, x);
+        }
+    }
 
-        return contratRepo.filterContratByEtudiant(idEtudiant,dateDebut,dateFin,x);
+    @Override
+    public List<Contrat> getContratByIdEtudiant(Long idEtudiant) {
+
+        return contratRepo.findByEtudiantIdEtudiant(idEtudiant);
     }
 
 

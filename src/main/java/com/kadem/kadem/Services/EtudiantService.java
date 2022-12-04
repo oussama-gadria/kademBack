@@ -1,9 +1,6 @@
 package com.kadem.kadem.Services;
 
-import com.kadem.kadem.Entities.Contrat;
-import com.kadem.kadem.Entities.Departement;
-import com.kadem.kadem.Entities.Equipe;
-import com.kadem.kadem.Entities.Etudiant;
+import com.kadem.kadem.Entities.*;
 import com.kadem.kadem.ExceptionHandlingEtudiantContrat.InvalidExceptionEtudiantContrat;
 import com.kadem.kadem.Repository.ContratRepository;
 import com.kadem.kadem.Repository.DepartementRepository;
@@ -74,9 +71,9 @@ public class EtudiantService  implements EtudiantServiceInterface{
     public Etudiant assignEtudiantToDepartementWithNomD(Etudiant etudiant, String nomDepartement) throws InvalidExceptionEtudiantContrat {
         Departement  departement=departementRepo.findByNomDepart(nomDepartement);
         etudiant.setDepartement(departement);
-        if((etudiantRepo.findByEmail(etudiant.getEmail())!=null)&&(etudiant.getConfirmPassword()!=etudiant.getPassword()) ) throw new InvalidExceptionEtudiantContrat("essayer avec un autre mail et confirm password  ");
-        if (etudiantRepo.findByEmail(etudiant.getEmail())!=null) throw new InvalidExceptionEtudiantContrat("Ce Email existe deja! Essayer avec un autre");
-        if(etudiant.getConfirmPassword()!=etudiant.getPassword()) throw new InvalidExceptionEtudiantContrat("resaisir votre confirm password ");
+        //if((etudiantRepo.findByEmail(etudiant.getEmail())!=null)&&(etudiant.getConfirmPassword()!=etudiant.getPassword()) ) throw new InvalidExceptionEtudiantContrat("essayer avec un autre mail et confirm password  ");
+        //if (etudiantRepo.findByEmail(etudiant.getEmail())!=null) throw new InvalidExceptionEtudiantContrat("Ce Email existe deja! Essayer avec un autre");
+        //if(etudiant.getConfirmPassword()!=etudiant.getPassword()) throw new InvalidExceptionEtudiantContrat("resaisir votre confirm password ");
         return etudiantRepo.save(etudiant);
     }
 
@@ -103,7 +100,20 @@ public class EtudiantService  implements EtudiantServiceInterface{
         return etudiant;
     }
 
+   ////////trier les étudiants selon leur moyennes par classe/niveau et option
+    @Override
+    public List<Etudiant> getEtudiantOrderByMoyenne(String nomDepart, Option option, Integer niveau, Integer classe) {
+        Departement departement=departementRepo.findByNomDepart(nomDepart);
+        List<Etudiant> etudiants= etudiantRepo.findByDepartement_IdDepartAndClasseAndNiveauEtudiantAndOptionOrderByMoyenneEDesc(departement.getIdDepart(), classe,niveau,option);
+        return etudiants;
+    }
 
+    /////afficher la liste des enseignants de chaque etudiants groupés par le nom du module
+    @Override
+    public List<Enseignant> getEnseignantsByIdEtudiantGroupByModule(Long idEtudiant) {
+
+        return etudiantRepo.getEnseignantsByIdEtudiantGroupByModule(idEtudiant);
+    }
 
 
 

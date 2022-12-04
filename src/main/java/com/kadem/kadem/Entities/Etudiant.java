@@ -39,8 +39,8 @@ public class Etudiant implements Serializable {
 
     private String age;
 
-    private int classe;
-    private int  niveauEtudiant;
+    private Integer classe;
+    private Integer  niveauEtudiant;
 
 
     @Enumerated(EnumType.STRING)
