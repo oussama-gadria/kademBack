@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
-
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/Evenement")
 public class EvenementContoller {
@@ -36,7 +36,7 @@ public class EvenementContoller {
         return EvenementServ.GetEvenementById(Id);
     }
 
-    @PutMapping("/upadateEvenement/{id}")
+    @PutMapping("/updateEvenement/{id}")
     public Evenement updateEvenement(@PathVariable("id") Long Id,@RequestBody Evenement event)
     {
         return EvenementServ.updateEvenement(Id,event);
