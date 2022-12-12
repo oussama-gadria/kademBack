@@ -23,6 +23,8 @@ public interface ClubServiceInterface {
 
     public List<Club> GetClubsByIdEtudiant(Long idEtudiant) ;
 
+    public Club assignEtudiantToClubbyId(Long id,Long idClub);
+
 
 
 }
