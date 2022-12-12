@@ -38,16 +38,17 @@ public class Equipe implements Serializable {
     @Enumerated(EnumType.STRING)
 
     private Niveau niveau;
-
+    @JsonIgnore
     @ManyToOne
     Enseignant enseignant;
-
+    @JsonIgnore
     @OneToOne
     private DetailEquipe detailEquipe;
+    @JsonIgnore
     @JsonIgnoreProperties("equipes")
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Etudiant> etudiants;
-
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL, mappedBy="equipes")
     private List<Evenement> evenements;
 
