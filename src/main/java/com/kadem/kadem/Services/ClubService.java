@@ -44,7 +44,7 @@ public class ClubService implements ClubServiceInterface {
         if (clubRepo.existsById(Id)) {
             Club club = clubRepo.findById(Id).get();
             club.setNomClub(cl.getNomClub());
-            club.setResponsableClub(cl.getResponsableClub());
+           // club.setResponsableClub(cl.getResponsableClub());
             clubRepo.save(club);
             return club;
         } else {
@@ -94,4 +94,12 @@ public class ClubService implements ClubServiceInterface {
     Etudiant etudiant = etudiantRepo.findById(idEtudiant).get();
         return  etudiant.getClubs();
 }
+    public Club assignEtudiantToClubbyId(Long id,Long idClub){
+        Etudiant etudiant = etudiantRepo.findById(id).orElse(null);
+        Club club = clubRepo.findById(idClub).orElse(null);
+        club.getEtudiantsclub().add(etudiant);
+        clubRepo.save(club);
+        return club;
+    }
+
 }

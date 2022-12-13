@@ -4,9 +4,11 @@ import com.kadem.kadem.Entities.Equipe;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @Repository
+@CrossOrigin("*")
 public interface EquipeRepository extends CrudRepository<Equipe, Long> {
     //@Query("select count(equipe.etudiants.etudiant) from Equipe equipe join Etudiant etudiant on etudiant member equipe.etudiants where equipe.idEquipe=?1 and equipe.etudiants.etudiant.option=?2")
     //public int getNbEtudiantsInEquipeWithOption(Long idEquipe, String option);
