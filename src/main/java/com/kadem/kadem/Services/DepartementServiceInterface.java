@@ -11,4 +11,5 @@ public interface DepartementServiceInterface {
     public Departement updateDepart(Long id , Departement D);
     public void deleteDepart(Long id);
 
+    public Departement getDepartByname(String nomDepart);
 }

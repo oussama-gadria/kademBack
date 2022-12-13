@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins="*")
 @RestController
 @CrossOrigin(origins="*")
 @RequestMapping("/Departement")
@@ -37,6 +38,14 @@ public class DepartementControlleur {
         return DepartementService.getDepartById(id);
     }
 
+
+
+    @GetMapping("/getDepartBynom/{nomDepart}")
+    public Departement getDepartByNom(@PathVariable("nomDepart") String nomDepart)
+    {
+        return DepartementService.getDepartByname(nomDepart);
+    }
+
     @PutMapping("/updateDepart/{id}")
     public Departement updateDepart(@PathVariable("id")Long id,  @RequestBody() Departement D )
     {
@@ -48,6 +57,8 @@ public class DepartementControlleur {
     {
          DepartementService.deleteDepart(id);
     }
+
+
 
 
 
