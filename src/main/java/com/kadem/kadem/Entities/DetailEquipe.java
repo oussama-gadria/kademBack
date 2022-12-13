@@ -1,6 +1,7 @@
 package com.kadem.kadem.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,7 +26,7 @@ public class DetailEquipe implements Serializable {
     private Integer salle;
 
     private String thematique;
-    @JsonIgnore
+    @JsonIgnoreProperties("detailEquipe")
     @OneToOne(mappedBy = "detailEquipe")
     private Equipe equipe;
 }

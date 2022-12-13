@@ -26,10 +26,12 @@ public class Enseignant implements Serializable {
     private String email;
     private Integer age;
     private Float salaire;
+
     private Integer experienceParAnnee;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy ="enseignant")
     private List<Equipe> equipes;
+
     @JsonIgnoreProperties("listEnseignant")
     @ManyToOne
     private Module module;
