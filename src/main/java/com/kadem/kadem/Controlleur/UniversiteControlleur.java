@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/Universite")
 public class UniversiteControlleur {
     @Autowired

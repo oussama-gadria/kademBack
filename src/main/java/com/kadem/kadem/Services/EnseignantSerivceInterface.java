@@ -15,7 +15,8 @@ public interface EnseignantSerivceInterface {
     Enseignant addEnseignantToModule(Long IdModule,Enseignant enseignant) throws InvalidIdException;
    List<Enseignant> getEnseignantByIdUniversiteandIdDepartementandIdModule(Long idUniversite, Long idDepartement, Long idModule);
     List<Enseignant> triEnseignantBySalary(Long idUniversite, Long idDepartement, Long idModule);
-
+    List<Enseignant> triEnsBySalary();
+    List<Enseignant> triEnsBySalarycroissant();
 
 
 }
