@@ -64,6 +64,7 @@ public class ModuleService implements ModuleServiceInterface {
             Module M1 = ModuleRep.findById(id).get();
             M1.setNomModule(M.getNomModule());
             M1.setNbrMatieres((M.getNbrMatieres()));
+
             ModuleRep.save(M1);
             return M1;
         } else

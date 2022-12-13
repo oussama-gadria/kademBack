@@ -29,23 +29,18 @@ public class Etudiant implements Serializable {
 
     private String email;
 
-    private String password ;
-
-    private String confirmPassword;
-
     private String numeroTelephone;
 
     private String adresse;
 
     private String age;
 
-    private Integer classe;
     private Integer  niveauEtudiant;
-
 
     @Enumerated(EnumType.STRING)
     private Option option;
 
+    private Integer classe;
 
     private Float moyenneE;
 

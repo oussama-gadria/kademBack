@@ -25,6 +25,8 @@ public class DepartementService implements DepartementServiceInterface{
         return C ;
     }
 
+
+
     @Override
     public String addDepart(Departement D) {
         Departement D1= departRep.save(D);
@@ -63,6 +65,10 @@ public class DepartementService implements DepartementServiceInterface{
 
     }
 
+    @Override
+    public Departement getDepartByname(String nomDepart) {
+        return departRep.findByNomDepart(nomDepart);
+    }
 
 
 }
