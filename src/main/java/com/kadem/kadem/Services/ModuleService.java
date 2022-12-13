@@ -64,6 +64,7 @@ public class ModuleService implements ModuleServiceInterface {
             Module M1 = ModuleRep.findById(id).get();
             M1.setNomModule(M.getNomModule());
             M1.setNbrMatieres((M.getNbrMatieres()));
+
             ModuleRep.save(M1);
             return M1;
         } else
@@ -111,7 +112,7 @@ public class ModuleService implements ModuleServiceInterface {
 
     @Override
     public List<Enseignant> triEnseignantByExp(Long idUniversite, Long idDepartement, Long idModule) {
-        List<Enseignant> ListEnseignants=enseignantRep.getEnseignantByIdUniversiteAndIdUnivAndIdModule(idUniversite,idDepartement,idModule);
+        List<Enseignant> ListEnseignants=enseignantRep.getEnseignantByIdUniversiteAndIdDepartementAndIdModule(idUniversite,idDepartement,idModule);
         Integer taille=ListEnseignants.size();
         for (Integer i=1 ;i<taille;i++){
             Integer expAnnee=ListEnseignants.get(i).getExperienceParAnnee();
