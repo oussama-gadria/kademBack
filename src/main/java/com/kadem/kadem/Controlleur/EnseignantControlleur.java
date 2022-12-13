@@ -64,5 +64,14 @@ public class EnseignantControlleur {
     {
         return enseignantService.triEnseignantBySalary(idUniversite,idDepartement,idModule);
     }
+    @GetMapping("/triEnseignant")
+    public List<Enseignant> getListEsignant(){
+        return enseignantService.triEnsBySalary();
+    }
+    @GetMapping("/triEnseignantcroissant")
+    public List<Enseignant> getListEsignanttrier(){
+        return enseignantService.triEnsBySalarycroissant();
+    }
+
 
 }

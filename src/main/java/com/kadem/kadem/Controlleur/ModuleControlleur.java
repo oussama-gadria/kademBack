@@ -13,6 +13,7 @@ import java.util.List;
 
 @CrossOrigin(origins="*")
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/Module")
 public class ModuleControlleur {
     @Autowired

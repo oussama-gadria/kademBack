@@ -27,6 +27,6 @@ public class Module {
     private Departement departement;
 
     @JsonIgnoreProperties("module")
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="module")
+    @OneToMany( mappedBy="module")
     private List<Enseignant> listEnseignant;
 }
