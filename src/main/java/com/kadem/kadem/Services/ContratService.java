@@ -44,6 +44,7 @@ public String addContrat (Contrat C)
             contrat.setDateFinContrat(C.getDateFinContrat());
             contrat.setArchive(C.getArchive());
             contrat.setSpecialite(C.getSpecialite());
+            contrat.setMontantC(C.getMontantC());
             contratRepo.save(contrat);
             return contrat;
         } else {
@@ -83,6 +84,23 @@ public String addContrat (Contrat C)
 
 
     }
+
+    @Override
+    public Contrat affectContratToEtudiantwithId(Contrat contrat, Long idEtudiant) throws InvalidExceptionEtudiantContrat {
+        Etudiant etudiant=EtudiantRepo.findById(idEtudiant).get();
+        if(contratRepo.countByArchiveAndEtudiantIdEtudiant(false,etudiant.getIdEtudiant()) < 5)
+        {
+            contrat.setEtudiant(etudiant);
+            return contratRepo.save(contrat);
+        }
+        else
+        {
+            throw new InvalidExceptionEtudiantContrat("vous avez déja 5 contrat actifs! Vous ne pouvez plus ajouter un autre contrat.");
+        }
+
+
+    }
+
     ////afficher les contrats d'un etudiant avec filtrage
     @Override
     public List<Contrat> getALLcontratsByIdEtudiantwithFiltrage(Long idEtudiant, Date dateDebut, Date dateFin, boolean x) throws InvalidExceptionEtudiantContrat {
