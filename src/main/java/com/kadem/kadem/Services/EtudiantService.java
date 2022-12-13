@@ -44,7 +44,14 @@ public class EtudiantService  implements EtudiantServiceInterface{
             Etudiant etudiant = etudiantRepo.findById(Id).get();
             etudiant.setNomE(E.getNomE());
             etudiant.setPrenomE(E.getPrenomE());
+            etudiant.setEmail(E.getEmail());
+            etudiant.setAge(E.getAge());
+            etudiant.setAdresse(E.getAdresse());
+            etudiant.setNumeroTelephone(E.getNumeroTelephone());
+            etudiant.setNiveauEtudiant(E.getNiveauEtudiant());
             etudiant.setOption(E.getOption());
+            etudiant.setClasse(E.getClasse());
+
             etudiantRepo.save(etudiant);
             return etudiant;
         }

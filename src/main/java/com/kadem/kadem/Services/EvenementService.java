@@ -3,6 +3,7 @@ package com.kadem.kadem.Services;
 
 import com.kadem.kadem.Entities.Club;
 import com.kadem.kadem.Entities.Equipe;
+import com.kadem.kadem.Entities.Etudiant;
 import com.kadem.kadem.Entities.Evenement;
 import com.kadem.kadem.Repository.ClubRepository;
 import com.kadem.kadem.Repository.EquipeRepository;

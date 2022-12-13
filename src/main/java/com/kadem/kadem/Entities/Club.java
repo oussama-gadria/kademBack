@@ -36,6 +36,6 @@ public class Club  implements Serializable {
 
     @JsonIgnoreProperties("clubsResponsable")
     @ManyToOne
-    private  Etudiant ResponsableClub;
+    private  Etudiant responsableClub;
 
 }

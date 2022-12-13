@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/Club")
 public class ClubController {
@@ -34,7 +34,7 @@ public class ClubController {
         return ClubServ.GetClubById(Id);
     }
 
-    @PutMapping("/upadateClub/{id}")
+    @PutMapping("/updateClub/{id}")
     public Club updateClub(@PathVariable("id") Long Id,@RequestBody Club cl)
     {
         return ClubServ.updateClub(Id,cl);
@@ -64,7 +64,9 @@ public class ClubController {
         return ClubServ.GetClubsByIdEtudiant(idEtudiant);
     }
 
-
-
+    @PostMapping("/assignEtudiantToClubbyId/{id}/{idClub}")
+    public Club assignEtudiantToClubbyId(@PathVariable("id") Long id,@PathVariable("idClub") Long idClub ){
+        return ClubServ.assignEtudiantToClubbyId(id, idClub);
+    }
 
 }
