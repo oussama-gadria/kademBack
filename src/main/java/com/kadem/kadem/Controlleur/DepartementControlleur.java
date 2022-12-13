@@ -11,6 +11,7 @@ import java.util.List;
 
 @CrossOrigin(origins="*")
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/Departement")
 public class DepartementControlleur {
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/equipe")
 public class EquipeController {
     @Autowired
@@ -72,6 +73,10 @@ public class EquipeController {
     public  List<Equipe> triEquipeByScore(@PathVariable("idEvenement")Long idEvenement)
     {
         return equipeService.triEquipeByScore(idEvenement);
+    }
+    @PostMapping("/addEquipeWithResponsable/{id}")
+    public Equipe addEquipeWithResponsable(@RequestBody Equipe e,@PathVariable("id") long id){
+        return equipeService.addEquipeWithResponsable(id,e);
     }
 
 }

@@ -1,15 +1,13 @@
 package com.kadem.kadem.Services;
 
-import com.kadem.kadem.Entities.DetailEquipe;
-import com.kadem.kadem.Entities.Equipe;
-import com.kadem.kadem.Entities.Etudiant;
-import com.kadem.kadem.Entities.Evenement;
+import com.kadem.kadem.Entities.*;
 import com.kadem.kadem.ExceptionHandling.InvalidIdException;
 import com.kadem.kadem.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -126,6 +124,15 @@ public class EquipeService implements IEquipeService {
         }
 
         return ListEquipes;
+    }
+
+    @Override
+    public Equipe addEquipeWithResponsable(long IdEnseignant, Equipe E) {
+        Enseignant enseignant=enseignantRepository.findById( IdEnseignant).get();
+        Long id=enseignant.getIdEnseignant();
+        E.setResponsable(id);
+        equipeRepository.save(E);
+        return E;
     }
 
 

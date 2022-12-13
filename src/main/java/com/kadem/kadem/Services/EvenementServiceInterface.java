@@ -1,5 +1,6 @@
 package com.kadem.kadem.Services;
 
+import com.kadem.kadem.Entities.Etudiant;
 import com.kadem.kadem.Entities.Evenement;
 
 import java.util.Date;
@@ -18,6 +19,7 @@ public interface EvenementServiceInterface {
     Evenement GetEvenementById (Long Id);
 
     void DeleteEvenement (Long Id);
+
 
 
     Evenement addEvenementWithClubId (long IdC, Evenement E);

@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/Contrat")
 public class ContratController {
 
@@ -50,6 +51,13 @@ public class ContratController {
     public Contrat AddEtudiantToContrat(@RequestBody Contrat contrat, @PathVariable("nom") String nom, @PathVariable("prenom") String prenom, @PathVariable("email") String email) throws InvalidExceptionEtudiantContrat {
         return contratServ.affectContratToEtudiant(contrat, nom, prenom, email);
     }
+    /////Affecter un contrat à un étudiant en vérifiant que l’étudiant n’a pas dépassé la limite autorisée de 5 contrats actifs.
+    @PostMapping("/AddEtudiantToContratwithId/{id}")
+    public Contrat AddEtudiantToContratwithId(@RequestBody Contrat contrat, @PathVariable("id") Long idEtudiant) throws InvalidExceptionEtudiantContrat {
+        return contratServ.affectContratToEtudiantwithId(contrat,idEtudiant);
+    }
+
+
 
     ////afficher les contrats d'un etudiant avec filtrage
     @GetMapping("/filterContratByEtudiant/{idEtudiant}/{startDate}/{EndDate}/{archive}")

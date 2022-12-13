@@ -19,6 +19,7 @@ public interface IEquipeService {
     public long getNbEtudiantsInEquipeWithOption(Long idEquipe,String option);
     public int getNbEtudiantsInEquipeWithNomDepartement(Long idEquipe,String nomDepartement);
     public List<Equipe> triEquipeByScore(Long idEvenement);
+    public Equipe addEquipeWithResponsable(long IdEnseignant, Equipe E);
 
 
 }
