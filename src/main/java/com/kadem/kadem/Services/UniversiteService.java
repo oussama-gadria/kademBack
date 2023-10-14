@@ -134,6 +134,7 @@ public class UniversiteService implements UniversiteServiceInterface{
            {
                montantSECURITE=montantSECURITE+contrat.getMontantC();
            }
+
        }
        ////////////////////////////////////////////////////////////////////////////////////////////////////////
        }
